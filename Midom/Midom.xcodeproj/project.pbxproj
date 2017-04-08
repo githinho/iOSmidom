@@ -7,17 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1BA59BB4497B15AEBD322A0D /* Pods_Midom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC4F24E8CF4940CEABD3A5B /* Pods_Midom.framework */; };
 		4C8A51531E9924E000370925 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8A51521E9924E000370925 /* AppDelegate.swift */; };
 		4C8A51551E9924E000370925 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8A51541E9924E000370925 /* ViewController.swift */; };
 		4C8A515A1E9924E000370925 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C8A51591E9924E000370925 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		22553E624407AF28F2993D81 /* Pods-Midom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Midom.release.xcconfig"; path = "Pods/Target Support Files/Pods-Midom/Pods-Midom.release.xcconfig"; sourceTree = "<group>"; };
 		4C8A514F1E9924E000370925 /* Midom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Midom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C8A51521E9924E000370925 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C8A51541E9924E000370925 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4C8A51591E9924E000370925 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C8A515E1E9924E000370925 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACC4F24E8CF4940CEABD3A5B /* Pods_Midom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Midom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3154D4F528DD2085949F187 /* Pods-Midom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Midom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Midom/Pods-Midom.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -25,6 +29,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BA59BB4497B15AEBD322A0D /* Pods_Midom.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -36,6 +41,8 @@
 			children = (
 				4C8A51511E9924E000370925 /* Midom */,
 				4C8A51501E9924E000370925 /* Products */,
+				56A4A172EC8134F9F55C083B /* Pods */,
+				8BFD6298D3C6DA33359078B9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +65,23 @@
 			path = Midom;
 			sourceTree = "<group>";
 		};
+		56A4A172EC8134F9F55C083B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D3154D4F528DD2085949F187 /* Pods-Midom.debug.xcconfig */,
+				22553E624407AF28F2993D81 /* Pods-Midom.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		8BFD6298D3C6DA33359078B9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ACC4F24E8CF4940CEABD3A5B /* Pods_Midom.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -65,9 +89,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4C8A51611E9924E000370925 /* Build configuration list for PBXNativeTarget "Midom" */;
 			buildPhases = (
+				2C599C754DA6AC6DACDE6C0F /* [CP] Check Pods Manifest.lock */,
 				4C8A514B1E9924DF00370925 /* Sources */,
 				4C8A514C1E9924DF00370925 /* Frameworks */,
 				4C8A514D1E9924DF00370925 /* Resources */,
+				BF8280F8D333FC1B9F746C49 /* [CP] Embed Pods Frameworks */,
+				BCA838876AD0F13AFD14C081 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -122,6 +149,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2C599C754DA6AC6DACDE6C0F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BCA838876AD0F13AFD14C081 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Midom/Pods-Midom-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF8280F8D333FC1B9F746C49 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Midom/Pods-Midom-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4C8A514B1E9924DF00370925 /* Sources */ = {
@@ -231,6 +306,7 @@
 		};
 		4C8A51621E9924E000370925 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3154D4F528DD2085949F187 /* Pods-Midom.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Midom/Info.plist;
@@ -243,6 +319,7 @@
 		};
 		4C8A51631E9924E000370925 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22553E624407AF28F2993D81 /* Pods-Midom.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Midom/Info.plist;
