@@ -1,12 +1,15 @@
 PODS:
   - Alamofire (4.4.0)
+  - Timberjack (0.0.2)
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
+  - Timberjack
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  Timberjack: 4181fb4fa5c0c02a0855deb5aa1ade6043db7b42
 
-PODFILE CHECKSUM: 3bf164d034b395ca4ba07c940dae86905448c37f
+PODFILE CHECKSUM: bc26b7e6a8547800915f4a9b55d0e5b0d9ac4c5e
 
 COCOAPODS: 1.2.0

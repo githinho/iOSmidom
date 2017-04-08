@@ -4,4 +4,5 @@ use_frameworks!
 
 target 'Midom' do
     pod 'Alamofire', '~> 4.4'
+    pod 'Timberjack'
 end

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="Midom" customModuleProvider="target">
+            <connections>
+                <outlet property="passwordField" destination="M8r-vR-57f" id="wKR-R9-d1U"/>
+                <outlet property="usernameField" destination="BD6-oq-XFn" id="gha-Kq-p9C"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ZX1-3l-3za">
+                    <rect key="frame" x="80.5" y="246" width="160" height="76"/>
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BD6-oq-XFn">
+                            <rect key="frame" x="0.0" y="0.0" width="160" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="160" id="xzg-sd-vmk"/>
+                            </constraints>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M8r-vR-57f">
+                            <rect key="frame" x="0.0" y="46" width="160" height="30"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                        </textField>
+                    </subviews>
+                </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MIDOM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Um0-uk-pxp">
+                    <rect key="frame" x="110" y="141" width="101" height="36"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="usx-iQ-5dP">
+                    <rect key="frame" x="110" y="431" width="100" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="eTG-BO-hj6"/>
+                    </constraints>
+                    <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                    <state key="normal" title="Login"/>
+                    <connections>
+                        <action selector="loginButtonClicked:" destination="-1" eventType="touchUpInside" id="eN9-kV-RhQ"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="usx-iQ-5dP" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="HCN-eO-3an"/>
+                <constraint firstItem="Um0-uk-pxp" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="QRC-W7-JWZ"/>
+                <constraint firstItem="ZX1-3l-3za" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="h39-dh-WZK"/>
+                <constraint firstAttribute="bottom" secondItem="usx-iQ-5dP" secondAttribute="bottom" constant="107" id="pUI-eD-drT"/>
+                <constraint firstItem="ZX1-3l-3za" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="qf6-QO-XLG"/>
+                <constraint firstItem="Um0-uk-pxp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="141" id="yjz-aQ-9Yt"/>
+            </constraints>
+            <point key="canvasLocation" x="33" y="53"/>
+        </view>
+    </objects>
+</document>
