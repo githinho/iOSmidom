@@ -21,6 +21,8 @@
 		4CD0F0D41E99791300891758 /* MidomResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD0F0D31E99791300891758 /* MidomResponse.swift */; };
 		4CD0F0D81E997F1A00891758 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD0F0D61E997F1A00891758 /* LoginViewController.swift */; };
 		4CD0F0D91E997F1A00891758 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CD0F0D71E997F1A00891758 /* LoginViewController.xib */; };
+		4CD0F0DD1E998C4A00891758 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD0F0DB1E998C4A00891758 /* HomeViewController.swift */; };
+		4CD0F0DE1E998C4A00891758 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CD0F0DC1E998C4A00891758 /* HomeViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		4CD0F0D31E99791300891758 /* MidomResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MidomResponse.swift; path = Services/MidomResponse.swift; sourceTree = "<group>"; };
 		4CD0F0D61E997F1A00891758 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Login/LoginViewController.swift; sourceTree = "<group>"; };
 		4CD0F0D71E997F1A00891758 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = Login/LoginViewController.xib; sourceTree = "<group>"; };
+		4CD0F0DB1E998C4A00891758 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = Home/HomeViewController.swift; sourceTree = "<group>"; };
+		4CD0F0DC1E998C4A00891758 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeViewController.xib; path = Home/HomeViewController.xib; sourceTree = "<group>"; };
 		ACC4F24E8CF4940CEABD3A5B /* Pods_Midom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Midom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3154D4F528DD2085949F187 /* Pods-Midom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Midom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Midom/Pods-Midom.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,6 +81,7 @@
 		4C8A51511E9924E000370925 /* Midom */ = {
 			isa = PBXGroup;
 			children = (
+				4CD0F0DA1E998C3700891758 /* Home */,
 				4CD0F0D51E997EEC00891758 /* Login */,
 				4CD0F0CC1E9954F600891758 /* Services */,
 				4CD0F0C11E994DD200891758 /* Models */,
@@ -117,6 +122,15 @@
 				4CD0F0D71E997F1A00891758 /* LoginViewController.xib */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		4CD0F0DA1E998C3700891758 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				4CD0F0DB1E998C4A00891758 /* HomeViewController.swift */,
+				4CD0F0DC1E998C4A00891758 /* HomeViewController.xib */,
+			);
+			name = Home;
 			sourceTree = "<group>";
 		};
 		56A4A172EC8134F9F55C083B /* Pods */ = {
@@ -201,6 +215,7 @@
 			files = (
 				4CD0F0D91E997F1A00891758 /* LoginViewController.xib in Resources */,
 				4C8A515A1E9924E000370925 /* Assets.xcassets in Resources */,
+				4CD0F0DE1E998C4A00891758 /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +285,7 @@
 				4CD0F0C31E9950F400891758 /* AccountDetails.swift in Sources */,
 				4CD0F0D41E99791300891758 /* MidomResponse.swift in Sources */,
 				4CD0F0D81E997F1A00891758 /* LoginViewController.swift in Sources */,
+				4CD0F0DD1E998C4A00891758 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

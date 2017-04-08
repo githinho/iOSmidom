@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="Midom" customModuleProvider="target">
             <connections>
                 <outlet property="passwordField" destination="M8r-vR-57f" id="wKR-R9-d1U"/>
+                <outlet property="spinner" destination="BsA-m2-xGS" id="HAu-x0-oJk"/>
                 <outlet property="usernameField" destination="BD6-oq-XFn" id="gha-Kq-p9C"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -58,12 +59,18 @@
                         <action selector="loginButtonClicked:" destination="-1" eventType="touchUpInside" id="eN9-kV-RhQ"/>
                     </connections>
                 </button>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="BsA-m2-xGS">
+                    <rect key="frame" x="142" y="265.5" width="37" height="37"/>
+                    <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="usx-iQ-5dP" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="HCN-eO-3an"/>
                 <constraint firstItem="Um0-uk-pxp" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="QRC-W7-JWZ"/>
+                <constraint firstItem="BsA-m2-xGS" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="VP5-9S-61V"/>
                 <constraint firstItem="ZX1-3l-3za" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="h39-dh-WZK"/>
+                <constraint firstItem="BsA-m2-xGS" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="hy2-jj-fng"/>
                 <constraint firstAttribute="bottom" secondItem="usx-iQ-5dP" secondAttribute="bottom" constant="107" id="pUI-eD-drT"/>
                 <constraint firstItem="ZX1-3l-3za" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="qf6-QO-XLG"/>
                 <constraint firstItem="Um0-uk-pxp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="141" id="yjz-aQ-9Yt"/>

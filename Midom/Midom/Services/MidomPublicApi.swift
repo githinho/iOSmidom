@@ -37,17 +37,24 @@ class MidomPublicApi {
             "password": password]
         
         manager.request(endpoint + "login", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .validate()
             .responseJSON{ response in
                 var serviceResult: MidomResult<String>
                 switch response.result {
                 case .success(let jsonDictionary):
-                    let jsonDict = jsonDictionary as! JSONDictionary
-                    print("login response: \(jsonDict.description)")
-                    break
+                    if let jsonResponse = MidomResponse(json: jsonDictionary as! [String : Any]) {
+                        if jsonResponse.code == 0 {
+                            serviceResult = MidomResult.success(jsonResponse.message)
+                        } else {
+                            serviceResult = MidomResult.failure(jsonResponse.message)
+                        }
+                    } else {
+                        serviceResult = MidomResult.failure("unknow response for login")
+                    }
                 case .failure(let failure):
-                    print("login failure: \(failure.localizedDescription)")
-                    break
+                    serviceResult = MidomResult.failure(failure.localizedDescription)
                 }
+                completionHandler(serviceResult)
         }
     }
 }

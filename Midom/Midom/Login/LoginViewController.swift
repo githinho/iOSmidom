@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Toast_Swift
 
 class LoginViewController: UIViewController {
     
@@ -14,6 +15,7 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,10 +24,19 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginButtonClicked(_ sender: UIButton) {
+        spinner.startAnimating()
         if let username = usernameField.text, let password = passwordField.text {
-            apiService.login(username: username, password: password) { result in
-                
-                
+            apiService.login(username: username, password: password) { [weak self] result in
+                guard let `self` = self else { return }
+                switch result {
+                case .success(_):
+                    // TODO: save username and password
+                    self.present(HomeViewController(), animated: true, completion: nil)
+                    break
+                case .failure(let message):
+                    self.spinner.stopAnimating()
+                    self.view.makeToast(message)
+                }
             }
         }
         
