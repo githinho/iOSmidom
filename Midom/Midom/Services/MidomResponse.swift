@@ -9,13 +9,13 @@
 import Foundation
 
 struct MidomResponse {
-    let message: String
+    let message: Any
     let code: Int
 }
 
 extension MidomResponse {
     init?(json: [String: Any]) {
-        guard let message = json["message"] as? String,
+        guard let message = json["message"] as? Any,
             let code = json["code"] as? Int
             else {
             return nil

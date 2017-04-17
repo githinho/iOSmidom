@@ -44,12 +44,36 @@ class MidomPublicApi {
                 case .success(let jsonDictionary):
                     if let jsonResponse = MidomResponse(json: jsonDictionary as! [String : Any]) {
                         if jsonResponse.code == 0 {
-                            serviceResult = MidomResult.success(jsonResponse.message)
+                            serviceResult = MidomResult.success(jsonResponse.message as! String)
                         } else {
-                            serviceResult = MidomResult.failure(jsonResponse.message)
+                            serviceResult = MidomResult.failure(jsonResponse.message as! String)
                         }
                     } else {
                         serviceResult = MidomResult.failure("unknow response for login")
+                    }
+                case .failure(let failure):
+                    serviceResult = MidomResult.failure(failure.localizedDescription)
+                }
+                completionHandler(serviceResult)
+        }
+    }
+    
+    func getConsulationRequestByStatus(status: RequestType,
+                                       completionHandler: @escaping (MidomResult<[ConsultationRequest]>) -> Void) {
+        manager.request(endpoint + "getCr/\(status.rawValue)", method: .get, encoding: JSONEncoding.default)
+            .validate()
+            .responseJSON() { response in
+                var serviceResult: MidomResult<[ConsultationRequest]>
+                switch response.result {
+                case .success(let jsonDictionary):
+                    if let jsonResponse = MidomResponse(json: jsonDictionary as! [String : Any]) {
+                        if jsonResponse.code == 0 {
+                            serviceResult = MidomResult.success(jsonResponse.message as! [ConsultationRequest])
+                        } else {
+                            serviceResult = MidomResult.failure(jsonResponse.message as! String)
+                        }
+                    } else {
+                        serviceResult = MidomResult.failure("unknow response for getConsulationRequestByStatus")
                     }
                 case .failure(let failure):
                     serviceResult = MidomResult.failure(failure.localizedDescription)
