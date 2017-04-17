@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1BA59BB4497B15AEBD322A0D /* Pods_Midom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC4F24E8CF4940CEABD3A5B /* Pods_Midom.framework */; };
+		4C102F261EA534F7007066EC /* RequestListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C102F241EA534F7007066EC /* RequestListViewController.swift */; };
+		4C102F271EA534F7007066EC /* RequestListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C102F251EA534F7007066EC /* RequestListViewController.xib */; };
+		4C102F2A1EA535B9007066EC /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C102F291EA535B9007066EC /* RequestType.swift */; };
 		4C8A51531E9924E000370925 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8A51521E9924E000370925 /* AppDelegate.swift */; };
 		4C8A51551E9924E000370925 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8A51541E9924E000370925 /* ViewController.swift */; };
 		4C8A515A1E9924E000370925 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C8A51591E9924E000370925 /* Assets.xcassets */; };
@@ -27,6 +30,9 @@
 
 /* Begin PBXFileReference section */
 		22553E624407AF28F2993D81 /* Pods-Midom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Midom.release.xcconfig"; path = "Pods/Target Support Files/Pods-Midom/Pods-Midom.release.xcconfig"; sourceTree = "<group>"; };
+		4C102F241EA534F7007066EC /* RequestListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestListViewController.swift; path = RequestList/RequestListViewController.swift; sourceTree = "<group>"; };
+		4C102F251EA534F7007066EC /* RequestListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RequestListViewController.xib; path = RequestList/RequestListViewController.xib; sourceTree = "<group>"; };
+		4C102F291EA535B9007066EC /* RequestType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestType.swift; path = RequestList/RequestType.swift; sourceTree = "<group>"; };
 		4C8A514F1E9924E000370925 /* Midom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Midom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C8A51521E9924E000370925 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C8A51541E9924E000370925 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +66,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C102F281EA534FC007066EC /* RequestList */ = {
+			isa = PBXGroup;
+			children = (
+				4C102F241EA534F7007066EC /* RequestListViewController.swift */,
+				4C102F251EA534F7007066EC /* RequestListViewController.xib */,
+				4C102F291EA535B9007066EC /* RequestType.swift */,
+			);
+			name = RequestList;
+			sourceTree = "<group>";
+		};
 		4C8A51461E9924DF00370925 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +99,7 @@
 			children = (
 				4CD0F0DA1E998C3700891758 /* Home */,
 				4CD0F0D51E997EEC00891758 /* Login */,
+				4C102F281EA534FC007066EC /* RequestList */,
 				4CD0F0CC1E9954F600891758 /* Services */,
 				4CD0F0C11E994DD200891758 /* Models */,
 				4C8A51521E9924E000370925 /* AppDelegate.swift */,
@@ -215,6 +232,7 @@
 			files = (
 				4CD0F0D91E997F1A00891758 /* LoginViewController.xib in Resources */,
 				4C8A515A1E9924E000370925 /* Assets.xcassets in Resources */,
+				4C102F271EA534F7007066EC /* RequestListViewController.xib in Resources */,
 				4CD0F0DE1E998C4A00891758 /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,10 +296,12 @@
 				4CD0F0CB1E99541000891758 /* Specialisation.swift in Sources */,
 				4CD0F0C51E9951B300891758 /* ConsultationRequest.swift in Sources */,
 				4CD0F0C91E9953B600891758 /* ConsultationRequestMessage.swift in Sources */,
+				4C102F261EA534F7007066EC /* RequestListViewController.swift in Sources */,
 				4C8A51551E9924E000370925 /* ViewController.swift in Sources */,
 				4C8A51531E9924E000370925 /* AppDelegate.swift in Sources */,
 				4CD0F0D21E99555100891758 /* MidomPrivateApi.swift in Sources */,
 				4CD0F0D01E99554100891758 /* MidomPublicApi.swift in Sources */,
+				4C102F2A1EA535B9007066EC /* RequestType.swift in Sources */,
 				4CD0F0C31E9950F400891758 /* AccountDetails.swift in Sources */,
 				4CD0F0D41E99791300891758 /* MidomResponse.swift in Sources */,
 				4CD0F0D81E997F1A00891758 /* LoginViewController.swift in Sources */,
