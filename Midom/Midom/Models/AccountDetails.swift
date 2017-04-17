@@ -22,4 +22,10 @@ class AccountDetails {
     var otherContact: String?
     var isAvailable: String?
     
+    public func getFullName() -> String {
+        guard let first = firstName, let last = lastName else {
+            return ""
+        }
+        return "\(first) \(last)"
+    }
 }

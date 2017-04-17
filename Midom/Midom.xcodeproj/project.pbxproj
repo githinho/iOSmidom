@@ -73,11 +73,11 @@
 		4C102F281EA534FC007066EC /* RequestList */ = {
 			isa = PBXGroup;
 			children = (
-				4C102F291EA535B9007066EC /* RequestType.swift */,
 				4C102F241EA534F7007066EC /* RequestListViewController.swift */,
 				4C102F251EA534F7007066EC /* RequestListViewController.xib */,
 				4C102F2B1EA54C2F007066EC /* RequestTableViewCell.swift */,
 				4C102F2C1EA54C2F007066EC /* RequestTableViewCell.xib */,
+				4C102F291EA535B9007066EC /* RequestType.swift */,
 			);
 			name = RequestList;
 			sourceTree = "<group>";
