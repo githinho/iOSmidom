@@ -10,6 +10,13 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    private var navigationService: NavigationService?
+    
+    convenience init(navigationService: NavigationService) {
+        self.init()
+        self.navigationService = navigationService
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Midom"
@@ -44,14 +51,11 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func logoutClicked(_ sender: UIButton) {
-        // TODO: clear db, user
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        appDelegate?.window?.rootViewController =
-            UINavigationController(rootViewController: LoginViewController())
+        // TODO: clear db, user... use midomService
+        navigationService?.showLogin()
     }
     
     private func showListView(request: RequestType) {
-        navigationController?.pushViewController(
-            RequestListViewController(requestType: request), animated: true)
+        navigationService?.showRequestList(viewController: self, type: request)
     }
 }

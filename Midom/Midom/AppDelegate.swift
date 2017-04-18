@@ -11,19 +11,18 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
+    private let context = AppContext()
 
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        let window = context.window
+        window.makeKeyAndVisible()
+        window.frame = UIScreen.main.bounds
+        window.becomeKey()
+        window.backgroundColor = .white
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        
-        window = UIWindow(frame: UIScreen.main.bounds)
-        let viewController = HomeViewController()
-        let nc = UINavigationController(rootViewController: viewController)
-        window?.rootViewController = nc
-        window?.makeKeyAndVisible()
-        
-        window?.backgroundColor = .white
+        context.navigationService.showLogin()
         
         return true
     }

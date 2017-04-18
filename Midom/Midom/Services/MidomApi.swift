@@ -17,7 +17,7 @@ enum MidomResult<T> {
 
 typealias JSONDictionary = [String: Any]
 
-class MidomPublicApi {
+class MidomApi {
     
     var manager: Alamofire.SessionManager
     let baseUrl = "http://midom.rasip.fer.hr:8080/"
