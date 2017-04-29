@@ -55,7 +55,7 @@ class MidomService {
                 for request in requests {
                     accountIds.append(request.studyOwner!)
                     if let studyId = request.study {
-                        error = nil
+                        self.error = nil
                         self.api.getStudy(studyId: studyId) { resultStudy in
                             switch resultStudy {
                             case .success(let study):
