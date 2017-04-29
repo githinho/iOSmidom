@@ -21,7 +21,7 @@ class AppContext: ViewControllerFactory, PresenterContext {
     private(set) lazy var navigationService: NavigationService = NavigationService(window:self.window, factory: self)
     
     private lazy var renderer: Renderer = Renderer(window: self.window, context: self)
-    private lazy var apiService = MidomApi()
+    private lazy var apiService: MidomApi = MidomApi(navigationService: self.navigationService)
     internal lazy var midomService: MidomService =
         MidomService(
             midomApi: self.apiService,

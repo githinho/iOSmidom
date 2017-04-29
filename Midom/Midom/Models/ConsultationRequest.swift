@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import Gloss
 
-class ConsultationRequest {
+class ConsultationRequest: Decodable {
     
     var id: Int?
     var creationTime: Double?
@@ -20,5 +21,14 @@ class ConsultationRequest {
 //    private byte[] avatar;
 //    var avatarDownloadInProgress: Bool?
     
+    required init?(json: JSON) {
+        self.id = "id" <~~ json
+        self.creationTime = "creationTime" <~~ json
+        self.acceptanceTime = "acceptanceTime" <~~ json
+        self.studyOwner = "studyOwner" <~~ json
+        self.status = "status" <~~ json
+        self.study = "study" <~~ json
+        self.studyObj = "studyObj" <~~ json
+    }
     
 }

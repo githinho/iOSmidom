@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import Gloss
 
-class AccountDetails {
+class AccountDetails: Decodable {
     
     var id: Int?
     var username: String?
@@ -20,7 +21,23 @@ class AccountDetails {
     var telephon: String?
     var email: String?
     var otherContact: String?
-    var isAvailable: String?
+    var isAvailable: Bool?
+    var specialisations: [Specialisation]?
+    
+    required init?(json: JSON) {
+        self.id = "id" <~~ json
+        self.username = "username" <~~ json
+        self.firstName = "firstName" <~~ json
+        self.lastName = "lastName" <~~ json
+        self.organisation = "organisation" <~~ json
+        self.description = "description" <~~ json
+        self.location = "location" <~~ json
+        self.telephon = "telephon" <~~ json
+        self.email = "email" <~~ json
+        self.otherContact = "otherContact" <~~ json
+        self.isAvailable = "isAvailable" <~~ json
+        self.specialisations = "specialisations" <~~ json
+    }
     
     public func getFullName() -> String {
         guard let first = firstName, let last = lastName else {

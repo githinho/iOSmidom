@@ -1,18 +1,21 @@
 PODS:
   - Alamofire (4.4.0)
+  - Gloss (1.2.4)
   - Timberjack (0.0.2)
   - Toast-Swift (2.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
+  - Gloss (~> 1.2)
   - Timberjack
   - Toast-Swift (~> 2.0.0)
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  Gloss: 4e036074610fdb993abcb958ebcd7332588e2333
   Timberjack: 4181fb4fa5c0c02a0855deb5aa1ade6043db7b42
   Toast-Swift: 5b2f8f720f7e78e48511f693df1f9c9a6e38a25a
 
-PODFILE CHECKSUM: 2b1bf4a5ab03038e1a19a3287d5e97d46fe0c2c2
+PODFILE CHECKSUM: 4f063c56595f38df3971857f4680953e890336ce
 
 COCOAPODS: 1.2.0

@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import Gloss
 
-class ConsultationRequestMessage {
+class ConsultationRequestMessage: Decodable {
     
     var id: Int?
     var comment: String?
@@ -16,4 +17,11 @@ class ConsultationRequestMessage {
     var msSender: String?
     var spSender: String?
     
+    required init?(json: JSON) {
+        self.id = "id" <~~ json
+        self.comment = "comment" <~~ json
+        self.creationTime = "creationTime" <~~ json
+        self.msSender = "msSender" <~~ json
+        self.spSender = "spSender" <~~ json
+    }
 }

@@ -30,7 +30,22 @@ class MidomService {
             switch result {
             case .success(_):
                 // TODO: save username and password
+
                 self.navigation.showHome()
+            case .failure(let message):
+                self.error = message
+                self.signal()
+            }
+        }
+    }
+    
+    func getMyAccountDetails() {
+        api.getMyAccountDetails() { [weak self] result in
+            guard let `self` = self else { return }
+            switch result {
+            case .success(_):
+//                self.navigation.showHome()
+                break
             case .failure(let message):
                 self.error = message
                 self.signal()

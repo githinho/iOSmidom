@@ -7,13 +7,22 @@
 //
 
 import Foundation
+import Gloss
 
-class Specialisation {
+class Specialisation: Decodable {
     
     var id: Int?
     var name: String?
     var parentStudy: String?
     var subStudies: [Int]?
     var selected: Bool?
+    
+    required init?(json: JSON) {
+        self.id = "id" <~~ json
+        self.name = "name" <~~ json
+        self.parentStudy = "parentStudy" <~~ json
+        self.subStudies = "subStudies" <~~ json
+        self.selected = "selected" <~~ json
+    }
     
 }
