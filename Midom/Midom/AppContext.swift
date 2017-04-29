@@ -37,6 +37,6 @@ class AppContext: ViewControllerFactory, PresenterContext {
     }
     
     func requestListController(type: RequestType) -> RequestListViewController {
-        return RequestListViewController(requestType: type)
+        return RequestListViewController(requestType: type, service: midomService)
     }
 }

@@ -24,6 +24,8 @@ class Renderer {
             if let nc = self.window.rootViewController as? UINavigationController {
                 if let topvc = nc.topViewController as? LoginViewController {
                     topvc.update(errorMessage: Presenter.present(context: self.presenterContext))
+                } else if let topvc = nc.topViewController as? RequestListViewController {
+                    topvc.update(model: Presenter.present(context: self.presenterContext))
                 }
             }
         }

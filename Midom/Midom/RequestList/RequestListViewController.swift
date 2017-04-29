@@ -7,25 +7,32 @@
 //
 
 import UIKit
+import Toast_Swift
 
 class RequestListViewController: UIViewController {
     
     @IBOutlet weak var requeststableView: UITableView!
     
-    private var requestType: RequestType?
+    private var requestType: RequestType
+    private var service: MidomService
+    
     internal var requestsList = [ConsultationRequest]()
     internal let identifier = String(describing: RequestTableViewCell.self)
-
     
-    convenience init(requestType: RequestType) {
-        self.init()
+    init(requestType: RequestType, service: MidomService) {
         self.requestType = requestType
+        self.service = service
+        super.init(nibName: "RequestListViewController", bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = requestType?.rawValue
+        self.title = requestType.rawValue
         
         self.requeststableView.delegate = self
         self.requeststableView.dataSource = self
@@ -36,6 +43,18 @@ class RequestListViewController: UIViewController {
         let rowHeight: CGFloat = 80
         self.requeststableView.estimatedRowHeight = rowHeight
         self.requeststableView.rowHeight = rowHeight
+        
+        self.service.getConsultationRequestsForStatus(status: requestType)
+    }
+    
+    func update(model: ConsultationRequestsViewModel) {
+        if let error = model.error {
+            view.makeToast(error)
+        }
+        if let list = model.consultaionRequests {
+            requestsList = list
+            requeststableView.reloadData()
+        }
     }
 }
 
