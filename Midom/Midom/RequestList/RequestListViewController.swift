@@ -14,7 +14,7 @@ class RequestListViewController: UIViewController {
     @IBOutlet weak var requeststableView: UITableView!
     
     private var requestType: RequestType
-    private var service: MidomService
+    internal var service: MidomService
     
     internal var requestsList = [ConsultationRequest]()
     internal let identifier = String(describing: RequestTableViewCell.self)
@@ -63,7 +63,7 @@ extension RequestListViewController: UITableViewDataSource {
         let cell = requeststableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! RequestTableViewCell
         
         // TODO: use cell.configure()
-        cell.configure(request: requestsList[indexPath.item])
+        cell.configure(cellData: createCell(cr: requestsList[indexPath.item]))
         
         return cell
     }
@@ -74,6 +74,14 @@ extension RequestListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return requestsList.count
+    }
+    
+    private func createCell(cr: ConsultationRequest) -> RequstCell {
+        let studyName = cr.studyObj?.name ?? ""
+        let date = cr.creationTime ?? 1
+        let personName = service.accounts.first(where: {$0.id == cr.studyOwner!})?.getFullName() ?? ""
+        
+        return RequstCell(studyName: studyName, specialistName: personName, date: date)
     }
 }
 

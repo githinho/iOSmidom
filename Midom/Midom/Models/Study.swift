@@ -24,6 +24,6 @@ class Study: Decodable {
         self.creationDate = "creationDate" <~~ json
         self.ownerId = "ownerId" <~~ json
         self.open = "open" <~~ json
-        // TODO: add ownerObj
+        self.ownerObj = "ownerObj" <~~ json
     }
 }

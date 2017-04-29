@@ -14,10 +14,17 @@ class RequestTableViewCell: UITableViewCell {
     @IBOutlet weak var nameStudyLabel: UILabel!
     @IBOutlet weak var specialistLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    
-    public func configure(request: ConsultationRequest) {
-        nameStudyLabel.text = "Name study \(String(describing: request.studyObj?.name))"
-        specialistLabel.text = "Study owner: \(String(describing: request.studyObj?.ownerObj?.getFullName()))"
-        dateLabel.text = "Creation date: \(String(describing: request.creationTime))"
+
+    public func configure(cellData: RequstCell) {
+        nameStudyLabel.text = "Name study \(cellData.studyName))"
+        specialistLabel.text = "Study owner: \(cellData.specialistName)"
+        dateLabel.text = "Creation date: \(String(cellData.date).description)"
     }
+}
+
+struct RequstCell {
+//    let avatar: Data
+    let studyName: String
+    let specialistName: String
+    let date: Double
 }

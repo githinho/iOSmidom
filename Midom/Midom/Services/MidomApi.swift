@@ -113,7 +113,6 @@ class MidomApi {
         }
     }
     
-    
     private func checkResult(response: DataResponse<Any>) -> MidomResult<Any> {
         var serviceResult = MidomResult<Any>.failure("TEST")
         switch response.result {

@@ -18,7 +18,7 @@ class MidomService {
     
     var error: String?
     var consultationRequests: [ConsultationRequest]?
-    var accounts: [AccountDetails]?
+    var accounts = [AccountDetails]()
 
     init(midomApi: MidomApi, navigationService: NavigationService, signal: @escaping SignalUpdate) {
         self.api = midomApi
@@ -51,8 +51,11 @@ class MidomService {
             
             switch result {
             case .success(let requests):
+                var accountIds = [Int]()
                 for request in requests {
+                    accountIds.append(request.studyOwner!)
                     if let studyId = request.study {
+                        error = nil
                         self.api.getStudy(studyId: studyId) { resultStudy in
                             switch resultStudy {
                             case .success(let study):
@@ -65,6 +68,7 @@ class MidomService {
                         }
                     }
                 }
+                self.getAccountDetails(ids: accountIds)
             case .failure(let message):
                 self.error = message
                 self.signal()
@@ -86,5 +90,28 @@ class MidomService {
             }
         }
     }
-
+    
+    private func getAccountDetails(ids: [Int]) {
+        var uniqueIds = Array(Set(ids))
+        for account in accounts {
+            if let index = uniqueIds.index(where: { $0 == account.id}) {
+                uniqueIds.remove(at: index)
+            }
+        }
+        
+        for id in uniqueIds {
+            error = nil
+            api.getAccountDetails(id: id) { [weak self] result in
+                guard let `self` = self else { return }
+                
+                switch result {
+                case .success(let accountDetails):
+                    self.accounts.append(accountDetails)
+                case .failure(let error):
+                    self.error = error
+                    self.signal()
+                }
+            }
+        }
+    }
 }
