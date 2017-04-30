@@ -23,6 +23,7 @@ class AccountDetails: Decodable {
     var otherContact: String?
     var isAvailable: Bool?
     var specialisations: [Specialisation]?
+    var avatar: Data?
     
     required init?(json: JSON) {
         self.id = "id" <~~ json

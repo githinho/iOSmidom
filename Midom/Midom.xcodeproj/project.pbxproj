@@ -15,11 +15,11 @@
 		4C102F2E1EA54C2F007066EC /* RequestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C102F2C1EA54C2F007066EC /* RequestTableViewCell.xib */; };
 		4C2ADE711EA6BE54004E260A /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2ADE701EA6BE54004E260A /* Renderer.swift */; };
 		4C2ADE731EA6BE9E004E260A /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2ADE721EA6BE9E004E260A /* Presenter.swift */; };
+		4C32B0E71EB5F8E60047596F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C32B0E61EB5F8E60047596F /* Assets.xcassets */; };
 		4C5088761EA56C000005E9E2 /* AppContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5088751EA56C000005E9E2 /* AppContext.swift */; };
 		4C5088781EA56CC50005E9E2 /* NavigationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5088771EA56CC50005E9E2 /* NavigationService.swift */; };
 		4C50887A1EA572320005E9E2 /* MidomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5088791EA572320005E9E2 /* MidomService.swift */; };
 		4C8A51531E9924E000370925 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8A51521E9924E000370925 /* AppDelegate.swift */; };
-		4C8A515A1E9924E000370925 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C8A51591E9924E000370925 /* Assets.xcassets */; };
 		4CD0F0C31E9950F400891758 /* AccountDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD0F0C21E9950F400891758 /* AccountDetails.swift */; };
 		4CD0F0C51E9951B300891758 /* ConsultationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD0F0C41E9951B300891758 /* ConsultationRequest.swift */; };
 		4CD0F0C71E99535B00891758 /* Study.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD0F0C61E99535B00891758 /* Study.swift */; };
@@ -42,12 +42,12 @@
 		4C102F2C1EA54C2F007066EC /* RequestTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RequestTableViewCell.xib; path = RequestList/RequestTableViewCell.xib; sourceTree = "<group>"; };
 		4C2ADE701EA6BE54004E260A /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		4C2ADE721EA6BE9E004E260A /* Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+		4C32B0E61EB5F8E60047596F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C5088751EA56C000005E9E2 /* AppContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppContext.swift; sourceTree = "<group>"; };
 		4C5088771EA56CC50005E9E2 /* NavigationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationService.swift; path = Services/NavigationService.swift; sourceTree = "<group>"; };
 		4C5088791EA572320005E9E2 /* MidomService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MidomService.swift; path = Services/MidomService.swift; sourceTree = "<group>"; };
 		4C8A514F1E9924E000370925 /* Midom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Midom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C8A51521E9924E000370925 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4C8A51591E9924E000370925 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C8A515E1E9924E000370925 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CD0F0C21E9950F400891758 /* AccountDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountDetails.swift; path = Models/AccountDetails.swift; sourceTree = "<group>"; };
 		4CD0F0C41E9951B300891758 /* ConsultationRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConsultationRequest.swift; path = Models/ConsultationRequest.swift; sourceTree = "<group>"; };
@@ -101,7 +101,7 @@
 		4C2ADE751EA6C6DC004E260A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				4C8A51591E9924E000370925 /* Assets.xcassets */,
+				4C32B0E61EB5F8E60047596F /* Assets.xcassets */,
 				4C8A515E1E9924E000370925 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -263,9 +263,9 @@
 			files = (
 				4CD0F0D91E997F1A00891758 /* LoginViewController.xib in Resources */,
 				4C102F2E1EA54C2F007066EC /* RequestTableViewCell.xib in Resources */,
-				4C8A515A1E9924E000370925 /* Assets.xcassets in Resources */,
 				4C102F271EA534F7007066EC /* RequestListViewController.xib in Resources */,
 				4CD0F0DE1E998C4A00891758 /* HomeViewController.xib in Resources */,
+				4C32B0E71EB5F8E60047596F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

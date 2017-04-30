@@ -79,10 +79,19 @@ extension RequestListViewController: UITableViewDataSource {
     private func createCell(cr: ConsultationRequest) -> RequstCell {
         let studyName = cr.studyObj?.name ?? ""
         let date = cr.creationTime ?? 1
-        let personName = service.accounts.first(where: {$0.id == cr.studyOwner!})?.getFullName() ?? ""
         
-        return RequstCell(studyName: studyName, specialistName: personName, date: date)
+        var personName = ""
+        var avatar: UIImage?
+        if let account = service.accounts.first(where: {$0.id == cr.studyOwner!}) {
+            personName = account.getFullName()
+            if let data = account.avatar {
+                avatar = UIImage(data: data)
+            }
+        }
+        
+        return RequstCell(studyName: studyName, specialistName: personName, date: date, avatar: avatar)
     }
+    
 }
 
 extension RequestListViewController: UITableViewDelegate {

@@ -103,7 +103,6 @@ class MidomService {
             error = nil
             api.getAccountDetails(id: id) { [weak self] result in
                 guard let `self` = self else { return }
-                
                 switch result {
                 case .success(let accountDetails):
                     self.accounts.append(accountDetails)
@@ -111,6 +110,19 @@ class MidomService {
                     self.error = error
                     self.signal()
                 }
+            }
+            
+            api.getAvatar(accountId: id) { [weak self] result in
+                guard let `self` = self else { return }
+                switch result {
+                case .success(let data):
+                    if let index = self.accounts.index(where: {$0.id == id}) {
+                        self.accounts[index].avatar = data
+                    }
+                case .failure(let error):
+                    self.error = error
+                }
+                self.signal()
             }
         }
     }

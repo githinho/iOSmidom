@@ -16,15 +16,20 @@ class RequestTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
 
     public func configure(cellData: RequstCell) {
-        nameStudyLabel.text = "Name study \(cellData.studyName))"
+        nameStudyLabel.text = "Name study \(cellData.studyName)"
         specialistLabel.text = "Study owner: \(cellData.specialistName)"
         dateLabel.text = "Creation date: \(String(cellData.date).description)"
+        if let image = cellData.avatar {
+            avatar.image = image
+        } else {
+            avatar.image = UIImage(named: "anonymous_avatar")
+        }
     }
 }
 
 struct RequstCell {
-//    let avatar: Data
     let studyName: String
     let specialistName: String
     let date: Double
+    let avatar: UIImage?
 }

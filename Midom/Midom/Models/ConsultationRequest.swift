@@ -18,8 +18,6 @@ class ConsultationRequest: Decodable {
     var status: String?
     var study: Int?
     var studyObj: Study?
-//    private byte[] avatar;
-//    var avatarDownloadInProgress: Bool?
     
     required init?(json: JSON) {
         self.id = "id" <~~ json
@@ -30,5 +28,4 @@ class ConsultationRequest: Decodable {
         self.study = "study" <~~ json
         self.studyObj = "studyObj" <~~ json
     }
-    
 }

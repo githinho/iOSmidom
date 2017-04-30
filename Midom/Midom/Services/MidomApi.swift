@@ -105,11 +105,18 @@ class MidomApi {
         }
     }
     
-    func getAvatar(accountId: Int, completionHandler: @escaping (DataResponse<Data>) -> Void) {
+    func getAvatar(accountId: Int, completionHandler: @escaping (MidomResult<Data>) -> Void) {
         manager.request(baseUrl + "avatar/\(accountId)", method: .get)
             .validate()
             .responseData() { response in
-                completionHandler(response);
+                var result: MidomResult<Data>
+                switch response.result {
+                case .success(let data):
+                    result = MidomResult.success(data)
+                case .failure(let error) :
+                    result = MidomResult.failure(error.localizedDescription)
+                }
+                completionHandler(result);
         }
     }
     
