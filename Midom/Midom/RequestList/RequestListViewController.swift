@@ -13,7 +13,7 @@ class RequestListViewController: UIViewController {
     
     @IBOutlet weak var requeststableView: UITableView!
     
-    private var requestType: RequestType
+    internal var requestType: RequestType
     internal var service: MidomService
     
     internal var requestsList = [ConsultationRequest]()
@@ -98,5 +98,16 @@ extension RequestListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // TODO: open request details
         print("clicked item \(indexPath.item)")
+        
+        // TODO: add rest cases
+        switch requestType {
+        case .pending:
+            if let id = requestsList[indexPath.item].id {
+                self.service.moveToPendingCr(vc: self, id: id)
+            }
+        default:
+            break
+        }
+        
     }
 }

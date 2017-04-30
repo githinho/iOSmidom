@@ -23,6 +23,7 @@ class MidomService {
     var error: String?
     var consultationRequests: [ConsultationRequest]?
     var accounts = [AccountDetails]()
+    var crMessages = [ConsultationRequestMessage]()
 
     init(midomApi: MidomApi, navigationService: NavigationService, signal: @escaping SignalUpdate) {
         self.api = midomApi
@@ -120,10 +121,33 @@ class MidomService {
         }
     }
     
+    func moveToPendingCr(vc: UIViewController, id: Int) {
+        navigation.showPendingRequest(viewController: vc, id: id)
+        getConsultationRequestMessage(id: id)
+    }
+    
+    private func getConsultationRequestMessage(id: Int) {
+        if crMessages.contains(where: { $0.id == id }) {
+            return
+        }
+        
+        error = nil
+        api.getConsultationRequestMessage(id: id) { [weak self] result in
+            guard let `self` = self else { return }
+            switch result {
+            case .success(let crMessage):
+                self.crMessages.append(crMessage)
+            case .failure(let error):
+                self.error = error
+            }
+            self.signal()
+        }
+    }
+    
     private func getAccountDetails(ids: [Int]) {
         var uniqueIds = Array(Set(ids))
         for account in accounts {
-            if let index = uniqueIds.index(where: { $0 == account.id}) {
+            if let index = uniqueIds.index(where: { $0 == account.id }) {
                 uniqueIds.remove(at: index)
             }
         }

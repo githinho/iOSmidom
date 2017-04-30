@@ -105,6 +105,16 @@ class MidomApi {
         }
     }
     
+    func getConsultationRequestMessage(id: Int, completionHandler:
+        @escaping (MidomResult<ConsultationRequestMessage>) -> Void) {
+        manager.request(endpoint + "geCrMessages/\(id)", method: .get, encoding: JSONEncoding.default)
+            .validate()
+            .responseJSON() { response in
+                let checkedResult = self.checkResult(response: response)
+                self.checkJSONObject(checkedResult: checkedResult, completionHandler: completionHandler)
+        }
+    }
+    
     func getAvatar(accountId: Int, completionHandler: @escaping (MidomResult<Data>) -> Void) {
         manager.request(baseUrl + "avatar/\(accountId)", method: .get)
             .validate()

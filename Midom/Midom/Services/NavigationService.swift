@@ -33,4 +33,9 @@ class NavigationService {
         viewController.navigationController?.pushViewController(
             viewControllerFactory.requestListController(type: type), animated: true)
     }
+    
+    func showPendingRequest(viewController: UIViewController, id: Int) {
+        viewController.navigationController?.pushViewController(
+            viewControllerFactory.pendingRequestController(id: id), animated: true)
+    }
 }

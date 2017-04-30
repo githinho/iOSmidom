@@ -13,6 +13,7 @@ protocol ViewControllerFactory {
     func loginController() -> LoginViewController
     func homeController() -> HomeViewController
     func requestListController(type: RequestType) -> RequestListViewController
+    func pendingRequestController(id: Int) -> PendingRequestViewController
 }
 
 class AppContext: ViewControllerFactory, PresenterContext {
@@ -38,5 +39,9 @@ class AppContext: ViewControllerFactory, PresenterContext {
     
     func requestListController(type: RequestType) -> RequestListViewController {
         return RequestListViewController(requestType: type, service: midomService)
+    }
+    
+    func pendingRequestController(id: Int) -> PendingRequestViewController {
+        return PendingRequestViewController(midomService: midomService, crId: id)
     }
 }
