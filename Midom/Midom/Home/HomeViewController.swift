@@ -10,11 +10,17 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
-    private var navigationService: NavigationService?
+    private var service: MidomService
+    private var navigationService: NavigationService
     
-    convenience init(navigationService: NavigationService) {
-        self.init()
+    init(navigationService: NavigationService, midomService: MidomService) {
+        self.service = midomService
         self.navigationService = navigationService
+        super.init(nibName: "HomeViewController", bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -51,11 +57,10 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func logoutClicked(_ sender: UIButton) {
-        // TODO: clear db, user... use midomService
-        navigationService?.showLogin()
+        service.logoutUser()
     }
     
     private func showListView(request: RequestType) {
-        navigationService?.showRequestList(viewController: self, type: request)
+        navigationService.showRequestList(viewController: self, type: request)
     }
 }

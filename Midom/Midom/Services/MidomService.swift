@@ -7,10 +7,14 @@
 //
 
 import Foundation
+import KeychainSwift
 
 class MidomService {
     
     typealias SignalUpdate = () -> ()
+    
+    private let usernameKey = "KeyForUsername"
+    private let passwordKey = "KeyForPassword"
     
     private let signal: SignalUpdate
     private let api: MidomApi
@@ -33,14 +37,39 @@ class MidomService {
             
             switch result {
             case .success(_):
-                // TODO: save username and password
-
+                let keychain = KeychainSwift()
+                keychain.set(username, forKey: self.usernameKey)
+                keychain.set(password, forKey: self.passwordKey)
                 self.navigation.showHome()
             case .failure(let message):
                 self.error = message
                 self.signal()
             }
         }
+    }
+    
+    func tryToLoginUser() {
+        let keychain = KeychainSwift()
+        if let username = keychain.get(usernameKey),
+            let password = keychain.get(passwordKey) {
+            api.login(username: username, password: password) { [weak self] result in
+                guard let `self` = self else { return }
+                switch result {
+                case .success(_):
+                    self.navigation.showHome()
+                case .failure(_):
+                    self.navigation.showLogin()
+                }
+            }
+        } else {
+            self.navigation.showLogin()
+        }
+    }
+    
+    func logoutUser() {
+        let keychain = KeychainSwift()
+        keychain.clear()
+        self.navigation.showLogin()
     }
     
     func getConsultationRequestsForStatus(status: RequestType) {

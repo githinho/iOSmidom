@@ -32,19 +32,6 @@ class LoginViewController: UIViewController {
         spinner.startAnimating()
         if let username = usernameField.text, let password = passwordField.text {
             midomService?.loginUser(username: username, password: password)
-            
-//            apiService?.login(username: username, password: password) { [weak self] result in
-//                guard let `self` = self else { return }
-//                switch result {
-//                case .success(_):
-//                    // TODO: save username and password
-//                    self.present(HomeViewController(), animated: true, completion: nil)
-//                    break
-//                case .failure(let message):
-//                    self.spinner.stopAnimating()
-//                    self.view.makeToast(message)
-//                }
-//            }
         }
     }
     

@@ -33,7 +33,7 @@ class AppContext: ViewControllerFactory, PresenterContext {
     }
     
     func homeController() -> HomeViewController {
-        return HomeViewController(navigationService: navigationService)
+        return HomeViewController(navigationService: navigationService, midomService: midomService)
     }
     
     func requestListController(type: RequestType) -> RequestListViewController {

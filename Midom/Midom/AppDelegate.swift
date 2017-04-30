@@ -21,11 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window.frame = UIScreen.main.bounds
         window.becomeKey()
         window.backgroundColor = .white
-
-        context.navigationService.showLogin()
+        window.rootViewController = UINavigationController()
+        
+        context.midomService.tryToLoginUser()
         
         return true
     }
-
 }
-

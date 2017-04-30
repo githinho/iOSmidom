@@ -16,6 +16,7 @@
 		4C2ADE711EA6BE54004E260A /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2ADE701EA6BE54004E260A /* Renderer.swift */; };
 		4C2ADE731EA6BE9E004E260A /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2ADE721EA6BE9E004E260A /* Presenter.swift */; };
 		4C32B0E71EB5F8E60047596F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C32B0E61EB5F8E60047596F /* Assets.xcassets */; };
+		4C32B0E91EB6240E0047596F /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C32B0E81EB6240E0047596F /* KeychainService.swift */; };
 		4C5088761EA56C000005E9E2 /* AppContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5088751EA56C000005E9E2 /* AppContext.swift */; };
 		4C5088781EA56CC50005E9E2 /* NavigationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5088771EA56CC50005E9E2 /* NavigationService.swift */; };
 		4C50887A1EA572320005E9E2 /* MidomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5088791EA572320005E9E2 /* MidomService.swift */; };
@@ -43,6 +44,7 @@
 		4C2ADE701EA6BE54004E260A /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		4C2ADE721EA6BE9E004E260A /* Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		4C32B0E61EB5F8E60047596F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4C32B0E81EB6240E0047596F /* KeychainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainService.swift; path = Services/KeychainService.swift; sourceTree = "<group>"; };
 		4C5088751EA56C000005E9E2 /* AppContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppContext.swift; sourceTree = "<group>"; };
 		4C5088771EA56CC50005E9E2 /* NavigationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationService.swift; path = Services/NavigationService.swift; sourceTree = "<group>"; };
 		4C5088791EA572320005E9E2 /* MidomService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MidomService.swift; path = Services/MidomService.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 		4CD0F0CC1E9954F600891758 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				4C32B0E81EB6240E0047596F /* KeychainService.swift */,
 				4CD0F0CF1E99554100891758 /* MidomApi.swift */,
 				4CD0F0D31E99791300891758 /* MidomResponse.swift */,
 				4C5088771EA56CC50005E9E2 /* NavigationService.swift */,
@@ -338,6 +341,7 @@
 				4CD0F0C31E9950F400891758 /* AccountDetails.swift in Sources */,
 				4C5088781EA56CC50005E9E2 /* NavigationService.swift in Sources */,
 				4C102F2D1EA54C2F007066EC /* RequestTableViewCell.swift in Sources */,
+				4C32B0E91EB6240E0047596F /* KeychainService.swift in Sources */,
 				4CD0F0D41E99791300891758 /* MidomResponse.swift in Sources */,
 				4C2ADE711EA6BE54004E260A /* Renderer.swift in Sources */,
 				4CD0F0D81E997F1A00891758 /* LoginViewController.swift in Sources */,
