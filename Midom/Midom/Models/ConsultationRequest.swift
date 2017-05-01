@@ -12,7 +12,7 @@ import Gloss
 class ConsultationRequest: Decodable {
     
     var id: Int?
-    var creationTime: Double?
+    var creationTime: UInt64?
     var acceptanceTime: String?
     var studyOwner: Int?
     var status: String?

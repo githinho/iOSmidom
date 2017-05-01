@@ -18,7 +18,7 @@ class RequestTableViewCell: UITableViewCell {
     public func configure(cellData: RequstCell) {
         nameStudyLabel.text = "Name study \(cellData.studyName)"
         specialistLabel.text = "Study owner: \(cellData.specialistName)"
-        dateLabel.text = "Creation date: \(String(cellData.date).description)"
+        dateLabel.text = "Creation date: \(Utils.getDateFromDouble(date: cellData.date))"
         if let image = cellData.avatar {
             avatar.image = image
         } else {
@@ -30,6 +30,6 @@ class RequestTableViewCell: UITableViewCell {
 struct RequstCell {
     let studyName: String
     let specialistName: String
-    let date: Double
+    let date: UInt64
     let avatar: UIImage?
 }

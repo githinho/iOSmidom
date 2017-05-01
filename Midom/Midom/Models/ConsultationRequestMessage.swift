@@ -13,7 +13,7 @@ class ConsultationRequestMessage: Decodable {
     
     var id: Int?
     var comment: String?
-    var creationTime: String?
+    var creationTime: UInt64?
     var msSender: String?
     var spSender: String?
     
