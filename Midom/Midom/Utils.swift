@@ -20,7 +20,7 @@ class Utils {
             let year =  components.year?.description ?? ""
             let month = components.month?.description ?? ""
             let day = components.day?.description ?? ""
-            return "\(day).\(month).\(year)"
+            return "\(day).\(month).\(year)."
         } else {
             return ""
         }
