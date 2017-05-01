@@ -132,11 +132,11 @@ class MidomService {
         }
         
         error = nil
-        api.getConsultationRequestMessage(id: id) { [weak self] result in
+        api.getConsultationRequestMessages(id: id) { [weak self] result in
             guard let `self` = self else { return }
             switch result {
-            case .success(let crMessage):
-                self.crMessages.append(crMessage)
+            case .success(let messages):
+                self.crMessages.append(contentsOf: messages)
             case .failure(let error):
                 self.error = error
             }

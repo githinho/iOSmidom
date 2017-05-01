@@ -62,19 +62,7 @@ class MidomApi {
             .validate()
             .responseJSON() { response in
                 let serviceResult = self.checkResult(response: response)
-                var result: MidomResult<[ConsultationRequest]>
-                switch serviceResult {
-                case .success(let message):
-                    if let jsons = message as? [JSON],
-                        let consultationRequests = [ConsultationRequest].from(jsonArray: jsons) {
-                        result = MidomResult.success(consultationRequests)
-                    } else {
-                        result = MidomResult.failure("cannot deserialize Study JSON")
-                    }
-                case .failure(let message):
-                    result = MidomResult.failure(message)
-                }
-                completionHandler(result)
+                self.checkJSONArray(checkedResult: serviceResult, completionHandler: completionHandler)
         }
     }
     
@@ -105,13 +93,13 @@ class MidomApi {
         }
     }
     
-    func getConsultationRequestMessage(id: Int, completionHandler:
-        @escaping (MidomResult<ConsultationRequestMessage>) -> Void) {
+    func getConsultationRequestMessages(id: Int, completionHandler:
+        @escaping (MidomResult<[ConsultationRequestMessage]>) -> Void) {
         manager.request(endpoint + "geCrMessages/\(id)", method: .get, encoding: JSONEncoding.default)
             .validate()
             .responseJSON() { response in
                 let checkedResult = self.checkResult(response: response)
-                self.checkJSONObject(checkedResult: checkedResult, completionHandler: completionHandler)
+                self.checkJSONArray(checkedResult: checkedResult, completionHandler: completionHandler)
         }
     }
     
@@ -165,6 +153,22 @@ class MidomApi {
                 result = MidomResult.success(object)
             } else {
                 result = MidomResult.failure("cannot deserialize JSON")
+            }
+        case .failure(let message):
+            result = MidomResult.failure(message)
+        }
+        completionHandler(result)
+    }
+    
+    private func checkJSONArray<T: Decodable>(checkedResult: MidomResult<Any>, completionHandler: @escaping (MidomResult<[T]>) -> Void) {
+        var result: MidomResult<[T]>
+        switch checkedResult {
+        case .success(let message):
+            if let jsons = message as? [JSON],
+                let consultationRequests = [T].from(jsonArray: jsons) {
+                result = MidomResult.success(consultationRequests)
+            } else {
+                result = MidomResult.failure("cannot deserialize Study JSON")
             }
         case .failure(let message):
             result = MidomResult.failure(message)
