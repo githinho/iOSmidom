@@ -38,8 +38,24 @@ class AcceptedRequestViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigationBar()
+        configureCollectionView()
+    }
+    
+    private func setInitialVariables() {
+        consulationRequest = service.consultationRequests?.first(where: { $0.id == crId })
+        study = consulationRequest?.studyObj
+        account = service.accounts.first(where: { $0.id == study?.ownerId })
+    }
+    
+    private func setupNavigationBar() {
         self.title = "Consultation Request Data"
-        
+        let rightButtonItem = UIBarButtonItem(barButtonSystemItem: .compose,
+                                              target: self, action: #selector(composeBarButtonClicked))
+        self.navigationItem.rightBarButtonItem = rightButtonItem
+    }
+    
+    private func configureCollectionView() {
         imageCollectionView.delegate = self
         imageCollectionView.dataSource = self
         imageCollectionView.register(
@@ -47,10 +63,8 @@ class AcceptedRequestViewController: UIViewController {
             forCellWithReuseIdentifier: identifier)
     }
     
-    private func setInitialVariables() {
-        consulationRequest = service.consultationRequests?.first(where: { $0.id == crId })
-        study = consulationRequest?.studyObj
-        account = service.accounts.first(where: { $0.id == study?.ownerId })
+    @objc private func composeBarButtonClicked() {
+        
     }
 }
 
