@@ -30,6 +30,8 @@ class PendingRequestViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "Request data"
     }
     
     func update(viewModel: PendingCrViewModel) {
@@ -63,11 +65,7 @@ class PendingRequestViewController: UIViewController {
     }
     
     @IBAction func acceptButtonClicked(_ sender: UIButton) {
-        if let rootVc = self.navigationController?.viewControllers.first {
-            service.acceptPendingCr(vc: rootVc, crId: crId)
-        } else {
-            self.view.makeToast("Cannot get Root VC")
-        }
+        service.acceptPendingCr(vc: self, crId: crId)
     }
 
     @IBAction func rejectButtonClicked(_ sender: UIButton) {

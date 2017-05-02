@@ -143,8 +143,8 @@ class MidomService {
             switch result {
             case .success(_):
                 // TODO: download the study
+                
                 self.navigation.showAcceptedRequest(viewController: vc, id: crId)
-                break
             case .failure(let error):
                 self.error = error
                 self.signal()
