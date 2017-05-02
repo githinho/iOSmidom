@@ -63,7 +63,7 @@ class PendingRequestViewController: UIViewController {
     }
     
     @IBAction func acceptButtonClicked(_ sender: UIButton) {
-        service.acceptPendingCr(crId: crId)
+        service.acceptPendingCr(vc: self, crId: crId)
     }
 
     @IBAction func rejectButtonClicked(_ sender: UIButton) {

@@ -127,14 +127,14 @@ class MidomService {
         getConsultationRequestMessage(id: id)
     }
     
-    func acceptPendingCr(crId: Int) {
+    func acceptPendingCr(vc: UIViewController, crId: Int) {
         error = nil
         api.answerPendingCr(accept: true, crId: crId) { [weak self] result in
             guard let `self` = self else { return }
             switch result {
             case .success(_):
-                // TODO: download the study and show it
-                self.navigation.showHome()
+                // TODO: download the study
+                self.navigation.showAcceptedRequest(viewController: vc, id: crId)
                 break
             case .failure(let error):
                 self.error = error
