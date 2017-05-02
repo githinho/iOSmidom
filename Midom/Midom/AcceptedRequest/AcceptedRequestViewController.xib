@@ -23,59 +23,48 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="g5n-AZ-Gb4">
-                    <rect key="frame" x="16" y="78" width="150.5" height="77.5"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="g5n-AZ-Gb4">
+                    <rect key="frame" x="16" y="78" width="127" height="55"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Study provider" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DVJ-UG-vk7">
-                            <rect key="frame" x="0.0" y="0.0" width="150.5" height="20.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <rect key="frame" x="0.0" y="0.0" width="127" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Study name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kHV-Je-gOe">
-                            <rect key="frame" x="0.0" y="28.5" width="150.5" height="20.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <rect key="frame" x="0.0" y="19" width="127" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Specialist comment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lul-DY-2vz">
-                            <rect key="frame" x="0.0" y="57" width="150.5" height="20.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <rect key="frame" x="0.0" y="38" width="127" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                 </stackView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0g7-PT-qCO">
-                    <rect key="frame" x="0.0" y="175.5" width="375" height="491.5"/>
-                    <subviews>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="xYt-ED-SMR">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="491.5"/>
-                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Lug-Kf-d0B">
-                                <size key="itemSize" width="50" height="50"/>
-                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            </collectionViewFlowLayout>
-                        </collectionView>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstItem="xYt-ED-SMR" firstAttribute="leading" secondItem="0g7-PT-qCO" secondAttribute="leading" id="Kcd-8M-0tT"/>
-                        <constraint firstAttribute="trailing" secondItem="xYt-ED-SMR" secondAttribute="trailing" id="NIt-Ek-8uU"/>
-                        <constraint firstAttribute="bottom" secondItem="xYt-ED-SMR" secondAttribute="bottom" id="PGx-Wt-s83"/>
-                        <constraint firstItem="xYt-ED-SMR" firstAttribute="top" secondItem="0g7-PT-qCO" secondAttribute="top" id="gGI-kt-9VH"/>
-                    </constraints>
-                </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="xYt-ED-SMR">
+                    <rect key="frame" x="0.0" y="152.5" width="375" height="514"/>
+                    <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Lug-Kf-d0B">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="g5n-AZ-Gb4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="78" id="1P5-RZ-b54"/>
-                <constraint firstAttribute="bottom" secondItem="0g7-PT-qCO" secondAttribute="bottom" id="F6Y-10-DMl"/>
-                <constraint firstItem="0g7-PT-qCO" firstAttribute="top" secondItem="g5n-AZ-Gb4" secondAttribute="bottom" constant="20" id="TlL-fi-5eT"/>
-                <constraint firstItem="0g7-PT-qCO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bCI-RD-dHS"/>
-                <constraint firstAttribute="trailing" secondItem="0g7-PT-qCO" secondAttribute="trailing" id="gYC-TN-Fn5"/>
+                <constraint firstAttribute="trailing" secondItem="xYt-ED-SMR" secondAttribute="trailing" id="JS3-Tn-wcB"/>
+                <constraint firstItem="xYt-ED-SMR" firstAttribute="top" secondItem="Lul-DY-2vz" secondAttribute="bottom" constant="19.5" id="Ln1-W4-OO2"/>
+                <constraint firstAttribute="bottom" secondItem="xYt-ED-SMR" secondAttribute="bottom" constant="0.5" id="N8W-g5-Ay5"/>
                 <constraint firstItem="g5n-AZ-Gb4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="gnv-UY-rrT"/>
+                <constraint firstItem="xYt-ED-SMR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="v6e-8l-SSn"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <point key="canvasLocation" x="33.5" y="53.5"/>

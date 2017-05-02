@@ -18,10 +18,17 @@ class AcceptedRequestViewController: UIViewController {
     private let service: MidomService
     private let crId: Int
     
+    private var consulationRequest: ConsultationRequest?
+    private var study: Study?
+    private var account: AccountDetails?
+    
+    internal let identifier = String(describing: AcceptedRequestCollectionViewCell.self)
+    
     init(midomService: MidomService, crId: Int) {
         self.service = midomService
         self.crId = crId
         super.init(nibName: "AcceptedRequestViewController", bundle: nil)
+        setInitialVariables()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -30,8 +37,48 @@ class AcceptedRequestViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "Consultation Request Data"
+        
+        imageCollectionView.delegate = self
+        imageCollectionView.dataSource = self
+        imageCollectionView.register(
+            UINib(nibName: identifier, bundle: nil),
+            forCellWithReuseIdentifier: identifier)
     }
     
+    private func setInitialVariables() {
+        consulationRequest = service.consultationRequests?.first(where: { $0.id == crId })
+        study = consulationRequest?.studyObj
+        account = service.accounts.first(where: { $0.id == study?.ownerId })
+    }
+}
+
+extension AcceptedRequestViewController: UICollectionViewDelegate {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // TODO: open full screen image
+    }
+}
+
+extension AcceptedRequestViewController: UICollectionViewDataSource {
     
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
+        -> UICollectionViewCell {
+            
+        let cell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
+            as! AcceptedRequestCollectionViewCell
+        
+        return cell
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        // TODO: calculate number of photos
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        // TODO: calculate number of photos
+        return 3
+    }
 }

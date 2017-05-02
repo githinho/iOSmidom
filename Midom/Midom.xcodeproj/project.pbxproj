@@ -25,6 +25,8 @@
 		4C8A51531E9924E000370925 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8A51521E9924E000370925 /* AppDelegate.swift */; };
 		4CA440051EB9063F00B20FBE /* AcceptedRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA440031EB9063F00B20FBE /* AcceptedRequestViewController.swift */; };
 		4CA440061EB9063F00B20FBE /* AcceptedRequestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CA440041EB9063F00B20FBE /* AcceptedRequestViewController.xib */; };
+		4CA440091EB90FDA00B20FBE /* AcceptedRequestCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA440071EB90FDA00B20FBE /* AcceptedRequestCollectionViewCell.swift */; };
+		4CA4400A1EB90FDA00B20FBE /* AcceptedRequestCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CA440081EB90FDA00B20FBE /* AcceptedRequestCollectionViewCell.xib */; };
 		4CD0F0C31E9950F400891758 /* AccountDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD0F0C21E9950F400891758 /* AccountDetails.swift */; };
 		4CD0F0C51E9951B300891758 /* ConsultationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD0F0C41E9951B300891758 /* ConsultationRequest.swift */; };
 		4CD0F0C71E99535B00891758 /* Study.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD0F0C61E99535B00891758 /* Study.swift */; };
@@ -59,6 +61,8 @@
 		4C8A515E1E9924E000370925 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CA440031EB9063F00B20FBE /* AcceptedRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AcceptedRequestViewController.swift; path = AcceptedRequest/AcceptedRequestViewController.swift; sourceTree = "<group>"; };
 		4CA440041EB9063F00B20FBE /* AcceptedRequestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AcceptedRequestViewController.xib; path = AcceptedRequest/AcceptedRequestViewController.xib; sourceTree = "<group>"; };
+		4CA440071EB90FDA00B20FBE /* AcceptedRequestCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AcceptedRequestCollectionViewCell.swift; path = AcceptedRequest/AcceptedRequestCollectionViewCell.swift; sourceTree = "<group>"; };
+		4CA440081EB90FDA00B20FBE /* AcceptedRequestCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AcceptedRequestCollectionViewCell.xib; path = AcceptedRequest/AcceptedRequestCollectionViewCell.xib; sourceTree = "<group>"; };
 		4CD0F0C21E9950F400891758 /* AccountDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountDetails.swift; path = Models/AccountDetails.swift; sourceTree = "<group>"; };
 		4CD0F0C41E9951B300891758 /* ConsultationRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConsultationRequest.swift; path = Models/ConsultationRequest.swift; sourceTree = "<group>"; };
 		4CD0F0C61E99535B00891758 /* Study.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Study.swift; path = Models/Study.swift; sourceTree = "<group>"; };
@@ -167,6 +171,8 @@
 			children = (
 				4CA440031EB9063F00B20FBE /* AcceptedRequestViewController.swift */,
 				4CA440041EB9063F00B20FBE /* AcceptedRequestViewController.xib */,
+				4CA440071EB90FDA00B20FBE /* AcceptedRequestCollectionViewCell.swift */,
+				4CA440081EB90FDA00B20FBE /* AcceptedRequestCollectionViewCell.xib */,
 			);
 			name = AcceptRequest;
 			sourceTree = "<group>";
@@ -299,6 +305,7 @@
 				4C32B0EE1EB633370047596F /* PendingRequestViewController.xib in Resources */,
 				4CA440061EB9063F00B20FBE /* AcceptedRequestViewController.xib in Resources */,
 				4C32B0E71EB5F8E60047596F /* Assets.xcassets in Resources */,
+				4CA4400A1EB90FDA00B20FBE /* AcceptedRequestCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +385,7 @@
 				4CD0F0D81E997F1A00891758 /* LoginViewController.swift in Sources */,
 				4C32B0ED1EB633370047596F /* PendingRequestViewController.swift in Sources */,
 				4CD0F0DD1E998C4A00891758 /* HomeViewController.swift in Sources */,
+				4CA440091EB90FDA00B20FBE /* AcceptedRequestCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
