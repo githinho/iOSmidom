@@ -122,16 +122,19 @@ class MidomService {
     }
     
     func moveToPendingCr(vc: UIViewController, id: Int) {
+        currentRequest = id
         navigation.showPendingRequest(viewController: vc, id: id)
         getConsultationRequestMessage(id: id)
     }
     
     private func getConsultationRequestMessage(id: Int) {
+        // This doesn't work!!!
         if crMessages.contains(where: { $0.id == id }) {
             return
         }
         
         error = nil
+        self.crMessages.removeAll()
         api.getConsultationRequestMessages(id: id) { [weak self] result in
             guard let `self` = self else { return }
             switch result {
@@ -179,4 +182,37 @@ class MidomService {
             }
         }
     }
+    
+    
+    // NOT IN USE
+    var currentRequest: Int?
+    func getCurrentCrData() -> ConsultationRequestViewModel? {
+        if let consultationRequest = consultationRequests?
+            .first(where: { $0.id == currentRequest }),
+            let account = accounts
+                .first(where: { $0.id == consultationRequest.studyOwner}) {
+            
+            let studyName = consultationRequest.studyObj?.name ?? ""
+            let date = Utils.getDateFromDouble(date: consultationRequest.creationTime)
+            var comment = ""
+            for message in crMessages {
+                let text = message.comment ?? ""
+                comment += "\(text) \n"
+            }
+            
+            return ConsultationRequestViewModel(studyName: studyName,
+                                                date: date,
+                                                owner: account.getFullName(),
+                                                messages: comment)
+        } else {
+            return nil
+        }
+    }
+}
+
+struct ConsultationRequestViewModel {
+    let studyName: String
+    let date: String
+    let owner: String
+    let messages: String
 }

@@ -26,6 +26,8 @@ class Renderer {
                     topvc.update(errorMessage: Presenter.present(context: self.presenterContext))
                 } else if let topvc = nc.topViewController as? RequestListViewController {
                     topvc.update(model: Presenter.present(context: self.presenterContext))
+                } else if let topvc = nc.topViewController as? PendingRequestViewController {
+                    topvc.update(viewModel: Presenter.present(context: self.presenterContext))
                 }
             }
         }

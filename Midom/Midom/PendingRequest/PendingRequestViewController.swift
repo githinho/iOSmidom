@@ -30,8 +30,36 @@ class PendingRequestViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    }
+    
+    func update(viewModel: PendingCrViewModel) {
+        if let error = viewModel.error {
+            self.view.makeToast(error)
+        } else {
+            self.presentDatat(viewModel: viewModel)
+        }
+    }
+    
+    // TODO: refactor this! send only needed data
+    private func presentDatat(viewModel: PendingCrViewModel) {
+        if let consultationRequest = viewModel.consultationRequests?
+            .first(where: { $0.id == crId }) {
+            let studyName = consultationRequest.studyObj?.name ?? ""
+            let date = Utils.getDateFromDouble(date: consultationRequest.creationTime)
+            nameStudyLabel.text = "Name study: \(studyName)"
+            dateLabel.text = "Creation date: \(date)"
+            
+            if let account = viewModel.accounts?
+                .first(where: { $0.id == consultationRequest.studyOwner} ) {
+                specialistLabel.text = "Study specialist: \(account.getFullName())"
+            }
+        }
+        if let messages = viewModel.crMessages {
+            for message in messages {
+                let comment = message.comment ?? ""
+                commentLabel.text = "\(comment) \n"
+            }
+        }
     }
     
     @IBAction func acceptButtonClicked(_ sender: UIButton) {
