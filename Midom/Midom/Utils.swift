@@ -12,7 +12,6 @@ class Utils {
     
     static func getDateFromDouble(date: UInt64?) -> String {
         if let date = date {
-            print("Date = \(date)")
             let dateFormat = Date(timeIntervalSince1970: TimeInterval(date / 1000))
             let calendar = Calendar.current
             let components = calendar.dateComponents([.year, .month, .day], from: dateFormat)
