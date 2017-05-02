@@ -41,18 +41,7 @@ class MidomApi {
             .validate()
             .responseJSON{ response in
                 let serviceResult = self.checkResult(response: response)
-                var result: MidomResult<String>
-                switch serviceResult {
-                case .success(let message):
-                    if let successMessage = message as? String {
-                        result = MidomResult.success(successMessage)
-                    } else {
-                        result = MidomResult.failure("cannot deserialize Study JSON")
-                    }
-                case .failure(let message):
-                    result = MidomResult.failure(message)
-                }
-                completionHandler(result)
+                self.checkResponseString(checkedResult: serviceResult, completionHandler: completionHandler)
         }
     }
     
@@ -103,6 +92,24 @@ class MidomApi {
         }
     }
     
+    func answerPendingCr(accept: Bool, crId: Int, completionHandler: @escaping (MidomResult<String>) -> Void) {
+        var answer: String
+        if accept {
+            answer = "acceptRequest"
+        } else {
+            answer = "rejectRequest"
+        }
+        
+        let params: [String: String] = ["requestId": String(crId)]
+        manager.request(endpoint + answer, method: .post, parameters: params, encoding: JSONEncoding.default)
+            .validate()
+            .responseJSON() { response in
+                
+                let checkedResult = self.checkResult(response: response)
+                self.checkResponseString(checkedResult: checkedResult, completionHandler: completionHandler)
+        }
+    }
+    
     func getAvatar(accountId: Int, completionHandler: @escaping (MidomResult<Data>) -> Void) {
         manager.request(baseUrl + "avatar/\(accountId)", method: .get)
             .validate()
@@ -145,7 +152,24 @@ class MidomApi {
         return serviceResult
     }
     
-    private func checkJSONObject<T: Decodable>(checkedResult: MidomResult<Any>, completionHandler: @escaping (MidomResult<T>) -> Void) {
+    private func checkResponseString(checkedResult: MidomResult<Any>,
+                                 completionHandler: @escaping (MidomResult<String>) -> Void) {
+        var result: MidomResult<String>
+        switch checkedResult {
+        case .success(let message):
+            if let successMessage = message as? String {
+                result = MidomResult.success(successMessage)
+            } else {
+                result = MidomResult.failure("cannot deserialize Study JSON")
+            }
+        case .failure(let message):
+            result = MidomResult.failure(message)
+        }
+        completionHandler(result)
+    }
+    
+    private func checkJSONObject<T: Decodable>(checkedResult: MidomResult<Any>,
+                                 completionHandler: @escaping (MidomResult<T>) -> Void) {
         var result: MidomResult<T>
         switch checkedResult {
         case .success(let message):
@@ -160,7 +184,8 @@ class MidomApi {
         completionHandler(result)
     }
     
-    private func checkJSONArray<T: Decodable>(checkedResult: MidomResult<Any>, completionHandler: @escaping (MidomResult<[T]>) -> Void) {
+    private func checkJSONArray<T: Decodable>(checkedResult: MidomResult<Any>,
+                                completionHandler: @escaping (MidomResult<[T]>) -> Void) {
         var result: MidomResult<[T]>
         switch checkedResult {
         case .success(let message):

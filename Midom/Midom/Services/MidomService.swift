@@ -127,6 +127,36 @@ class MidomService {
         getConsultationRequestMessage(id: id)
     }
     
+    func acceptPendingCr(crId: Int) {
+        error = nil
+        api.answerPendingCr(accept: true, crId: crId) { [weak self] result in
+            guard let `self` = self else { return }
+            switch result {
+            case .success(_):
+                // TODO: download the study and show it
+                self.navigation.showHome()
+                break
+            case .failure(let error):
+                self.error = error
+                self.signal()
+            }
+        }
+    }
+    
+    func rejectPendingCr(crId: Int) {
+        error = nil
+        api.answerPendingCr(accept: false, crId: crId) { [weak self] result in
+            guard let `self` = self else { return }
+            switch result {
+            case .success(_):
+                self.navigation.showHome()
+            case .failure(let error):
+                self.error = error
+                self.signal()
+            }
+        }
+    }
+    
     private func getConsultationRequestMessage(id: Int) {
         // This doesn't work!!!
         if crMessages.contains(where: { $0.id == id }) {
@@ -210,6 +240,7 @@ class MidomService {
     }
 }
 
+// NOT IN USE
 struct ConsultationRequestViewModel {
     let studyName: String
     let date: String
