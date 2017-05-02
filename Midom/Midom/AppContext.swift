@@ -14,6 +14,7 @@ protocol ViewControllerFactory {
     func homeController() -> HomeViewController
     func requestListController(type: RequestType) -> RequestListViewController
     func pendingRequestController(id: Int) -> PendingRequestViewController
+    func accptedRequestController(id: Int) -> AcceptedRequestViewController
 }
 
 class AppContext: ViewControllerFactory, PresenterContext {
@@ -43,5 +44,9 @@ class AppContext: ViewControllerFactory, PresenterContext {
     
     func pendingRequestController(id: Int) -> PendingRequestViewController {
         return PendingRequestViewController(midomService: midomService, crId: id)
+    }
+    
+    func accptedRequestController(id: Int) -> AcceptedRequestViewController {
+        return AcceptedRequestViewController(midomService: midomService, crId: id)
     }
 }

@@ -15,9 +15,23 @@ class AcceptedRequestViewController: UIViewController {
     @IBOutlet weak var commentLable: UILabel!
     @IBOutlet weak var imageCollectionView: UICollectionView!
 
+    private let service: MidomService
+    private let crId: Int
+    
+    init(midomService: MidomService, crId: Int) {
+        self.service = midomService
+        self.crId = crId
+        super.init(nibName: "AcceptedRequestViewController", bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
+    
+    
+    
 }
