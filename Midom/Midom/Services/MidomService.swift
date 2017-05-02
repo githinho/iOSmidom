@@ -162,6 +162,20 @@ class MidomService {
         }
     }
     
+    func sendConsultationComment(id: Int, comment: String) {
+        error = nil
+        api.sendConsultationComment(id: id, comment: comment) { [weak self] result in
+            guard let `self` = self else { return }
+            switch result {
+            case .success(_):
+                self.navigation.showHome()
+            case .failure(let error):
+                self.error = error
+                self.signal()
+            }
+        }
+    }
+    
     private func getConsultationRequestMessage(id: Int) {
         // This doesn't work!!!
         if crMessages.contains(where: { $0.id == id }) {

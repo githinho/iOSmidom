@@ -110,6 +110,16 @@ class MidomApi {
         }
     }
     
+    func sendConsultationComment(id: Int, comment:String, completionHandler: @escaping (MidomResult<String>) -> Void) {
+        let params: [String: String] = ["crId": String(id), "comment": comment]
+        manager.request(endpoint + "setCrAnswer", method: .post, parameters: params, encoding: JSONEncoding.default)
+            .validate()
+            .responseJSON() { response in
+                let checkedResult = self.checkResult(response: response)
+                self.checkResponseString(checkedResult: checkedResult, completionHandler: completionHandler)
+        }
+    }
+    
     func getAvatar(accountId: Int, completionHandler: @escaping (MidomResult<Data>) -> Void) {
         manager.request(baseUrl + "avatar/\(accountId)", method: .get)
             .validate()

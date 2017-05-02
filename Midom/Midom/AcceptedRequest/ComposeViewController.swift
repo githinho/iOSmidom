@@ -32,7 +32,7 @@ class ComposeViewController: UIViewController {
     @IBAction func sendCommentButtonClicked(_ sender: UIButton) {
         if let comment = commentTextView.text {
             // TODO: send to server comment
-            
+            service.sendConsultationComment(id: crId, comment: comment)
         } else {
             self.view.makeToast("Cannot send empty comment")
         }
