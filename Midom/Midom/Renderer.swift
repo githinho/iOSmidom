@@ -28,6 +28,8 @@ class Renderer {
                     topvc.update(model: Presenter.present(context: self.presenterContext))
                 } else if let topvc = nc.topViewController as? PendingRequestViewController {
                     topvc.update(viewModel: Presenter.present(context: self.presenterContext))
+                } else if let topvc = nc.topViewController as? AcceptedRequestViewController {
+                    topvc.update(viewModel: Presenter.present(context: self.presenterContext))
                 }
             }
         }

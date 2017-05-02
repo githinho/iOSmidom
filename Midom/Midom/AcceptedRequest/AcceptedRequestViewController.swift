@@ -42,6 +42,34 @@ class AcceptedRequestViewController: UIViewController {
         configureCollectionView()
     }
     
+    func update(viewModel: PendingCrViewModel) {
+        if let error = viewModel.error {
+            self.view.makeToast(error)
+        } else {
+            self.presentData(viewModel: viewModel)
+        }
+    }
+    
+    private func presentData(viewModel: PendingCrViewModel) {
+        if let consultationRequest = viewModel.consultationRequests?
+            .first(where: { $0.id == crId }) {
+            let studyName = consultationRequest.studyObj?.name ?? ""
+            studyNameLabel.text = "Name study: \(studyName)"
+            
+            if let account = viewModel.accounts?
+                .first(where: { $0.id == consultationRequest.studyOwner} ) {
+                studyProviderLabel.text = "Study provider: \(account.getFullName())"
+            }
+        }
+        if let messages = viewModel.crMessages {
+            commentLable.text = "Specialist comment: "
+            for message in messages {
+                let comment = message.comment ?? ""
+                commentLable.text?.append("\(comment) \n")
+            }
+        }
+    }
+    
     private func setInitialVariables() {
         consulationRequest = service.consultationRequests?.first(where: { $0.id == crId })
         study = consulationRequest?.studyObj

@@ -136,7 +136,7 @@ class MidomApi {
     }
     
     private func checkResult(response: DataResponse<Any>) -> MidomResult<Any> {
-        var serviceResult = MidomResult<Any>.failure("TEST")
+        var serviceResult = MidomResult<Any>.failure("Initial failure")
         switch response.result {
         case .success(let jsonDictionary):
             if let jsonResponse = MidomResponse(json: jsonDictionary as! [String : Any]) {
