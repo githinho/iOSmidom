@@ -63,7 +63,11 @@ class PendingRequestViewController: UIViewController {
     }
     
     @IBAction func acceptButtonClicked(_ sender: UIButton) {
-        service.acceptPendingCr(vc: self, crId: crId)
+        if let rootVc = self.navigationController?.viewControllers.first {
+            service.acceptPendingCr(vc: rootVc, crId: crId)
+        } else {
+            self.view.makeToast("Cannot get Root VC")
+        }
     }
 
     @IBAction func rejectButtonClicked(_ sender: UIButton) {
