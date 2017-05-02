@@ -27,11 +27,14 @@ class ComposeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "Comment"
+        
+        commentTextView.becomeFirstResponder()
     }
     
     @IBAction func sendCommentButtonClicked(_ sender: UIButton) {
         if let comment = commentTextView.text {
-            // TODO: send to server comment
             service.sendConsultationComment(id: crId, comment: comment)
         } else {
             self.view.makeToast("Cannot send empty comment")
