@@ -27,6 +27,8 @@
 		4CA440061EB9063F00B20FBE /* AcceptedRequestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CA440041EB9063F00B20FBE /* AcceptedRequestViewController.xib */; };
 		4CA440091EB90FDA00B20FBE /* AcceptedRequestCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA440071EB90FDA00B20FBE /* AcceptedRequestCollectionViewCell.swift */; };
 		4CA4400A1EB90FDA00B20FBE /* AcceptedRequestCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CA440081EB90FDA00B20FBE /* AcceptedRequestCollectionViewCell.xib */; };
+		4CA4400E1EB91ADF00B20FBE /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA4400C1EB91ADF00B20FBE /* ComposeViewController.swift */; };
+		4CA4400F1EB91ADF00B20FBE /* ComposeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CA4400D1EB91ADF00B20FBE /* ComposeViewController.xib */; };
 		4CD0F0C31E9950F400891758 /* AccountDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD0F0C21E9950F400891758 /* AccountDetails.swift */; };
 		4CD0F0C51E9951B300891758 /* ConsultationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD0F0C41E9951B300891758 /* ConsultationRequest.swift */; };
 		4CD0F0C71E99535B00891758 /* Study.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD0F0C61E99535B00891758 /* Study.swift */; };
@@ -63,6 +65,8 @@
 		4CA440041EB9063F00B20FBE /* AcceptedRequestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AcceptedRequestViewController.xib; path = AcceptedRequest/AcceptedRequestViewController.xib; sourceTree = "<group>"; };
 		4CA440071EB90FDA00B20FBE /* AcceptedRequestCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AcceptedRequestCollectionViewCell.swift; path = AcceptedRequest/AcceptedRequestCollectionViewCell.swift; sourceTree = "<group>"; };
 		4CA440081EB90FDA00B20FBE /* AcceptedRequestCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AcceptedRequestCollectionViewCell.xib; path = AcceptedRequest/AcceptedRequestCollectionViewCell.xib; sourceTree = "<group>"; };
+		4CA4400C1EB91ADF00B20FBE /* ComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ComposeViewController.swift; path = AcceptedRequest/ComposeViewController.swift; sourceTree = "<group>"; };
+		4CA4400D1EB91ADF00B20FBE /* ComposeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ComposeViewController.xib; path = AcceptedRequest/ComposeViewController.xib; sourceTree = "<group>"; };
 		4CD0F0C21E9950F400891758 /* AccountDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountDetails.swift; path = Models/AccountDetails.swift; sourceTree = "<group>"; };
 		4CD0F0C41E9951B300891758 /* ConsultationRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConsultationRequest.swift; path = Models/ConsultationRequest.swift; sourceTree = "<group>"; };
 		4CD0F0C61E99535B00891758 /* Study.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Study.swift; path = Models/Study.swift; sourceTree = "<group>"; };
@@ -169,12 +173,22 @@
 		4CA440021EB9062200B20FBE /* AcceptRequest */ = {
 			isa = PBXGroup;
 			children = (
+				4CA4400B1EB91ABA00B20FBE /* Compose */,
 				4CA440031EB9063F00B20FBE /* AcceptedRequestViewController.swift */,
 				4CA440041EB9063F00B20FBE /* AcceptedRequestViewController.xib */,
 				4CA440071EB90FDA00B20FBE /* AcceptedRequestCollectionViewCell.swift */,
 				4CA440081EB90FDA00B20FBE /* AcceptedRequestCollectionViewCell.xib */,
 			);
 			name = AcceptRequest;
+			sourceTree = "<group>";
+		};
+		4CA4400B1EB91ABA00B20FBE /* Compose */ = {
+			isa = PBXGroup;
+			children = (
+				4CA4400C1EB91ADF00B20FBE /* ComposeViewController.swift */,
+				4CA4400D1EB91ADF00B20FBE /* ComposeViewController.xib */,
+			);
+			name = Compose;
 			sourceTree = "<group>";
 		};
 		4CD0F0C11E994DD200891758 /* Models */ = {
@@ -299,6 +313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CD0F0D91E997F1A00891758 /* LoginViewController.xib in Resources */,
+				4CA4400F1EB91ADF00B20FBE /* ComposeViewController.xib in Resources */,
 				4C102F2E1EA54C2F007066EC /* RequestTableViewCell.xib in Resources */,
 				4C102F271EA534F7007066EC /* RequestListViewController.xib in Resources */,
 				4CD0F0DE1E998C4A00891758 /* HomeViewController.xib in Resources */,
@@ -368,6 +383,7 @@
 				4CD0F0C71E99535B00891758 /* Study.swift in Sources */,
 				4C5088761EA56C000005E9E2 /* AppContext.swift in Sources */,
 				4CD0F0CB1E99541000891758 /* Specialisation.swift in Sources */,
+				4CA4400E1EB91ADF00B20FBE /* ComposeViewController.swift in Sources */,
 				4CD0F0C51E9951B300891758 /* ConsultationRequest.swift in Sources */,
 				4C50887A1EA572320005E9E2 /* MidomService.swift in Sources */,
 				4CD0F0C91E9953B600891758 /* ConsultationRequestMessage.swift in Sources */,

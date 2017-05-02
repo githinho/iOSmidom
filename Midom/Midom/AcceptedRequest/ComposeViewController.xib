@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ComposeViewController" customModule="Midom" customModuleProvider="target">
+            <connections>
+                <outlet property="commentTextView" destination="Gxa-jb-9Ot" id="oUU-IY-f6k"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Gxa-jb-9Ot">
+                    <rect key="frame" x="16" y="121.5" width="343" height="383.5"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write your comment: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehC-dx-yE5">
+                    <rect key="frame" x="16" y="78" width="156" height="19.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="12z-6B-z1W">
+                    <rect key="frame" x="135" y="553" width="104" height="30"/>
+                    <state key="normal" title="Send comment"/>
+                    <connections>
+                        <action selector="sendCommentButtonClicked:" destination="-1" eventType="touchUpInside" id="X7J-gc-efH"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="12z-6B-z1W" secondAttribute="bottom" constant="84" id="LJd-G9-7dw"/>
+                <constraint firstAttribute="trailing" secondItem="Gxa-jb-9Ot" secondAttribute="trailing" constant="16" id="OlB-VN-y5c"/>
+                <constraint firstItem="12z-6B-z1W" firstAttribute="top" secondItem="Gxa-jb-9Ot" secondAttribute="bottom" constant="48" id="VeD-nd-1ww"/>
+                <constraint firstItem="ehC-dx-yE5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="78" id="apf-sh-wcE"/>
+                <constraint firstItem="Gxa-jb-9Ot" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="gG4-sm-1x9"/>
+                <constraint firstItem="ehC-dx-yE5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="hpq-XC-F5G"/>
+                <constraint firstItem="12z-6B-z1W" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="oft-Q1-hzT"/>
+                <constraint firstItem="Gxa-jb-9Ot" firstAttribute="top" secondItem="ehC-dx-yE5" secondAttribute="bottom" constant="24" id="vcj-Yk-pmW"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <point key="canvasLocation" x="33.5" y="74.5"/>
+        </view>
+    </objects>
+</document>
