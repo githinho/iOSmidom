@@ -127,6 +127,11 @@ class MidomService {
         getConsultationRequestMessage(id: id)
     }
     
+    func moveToAcceptedCr(vc: UIViewController, id: Int) {
+        // TODO: download the study
+        self.navigation.showAcceptedRequest(viewController: vc, id: id)
+    }
+    
     func acceptPendingCr(vc: UIViewController, crId: Int) {
         error = nil
         api.answerPendingCr(accept: true, crId: crId) { [weak self] result in

@@ -60,11 +60,10 @@ class RequestListViewController: UIViewController {
 
 extension RequestListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = requeststableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! RequestTableViewCell
+        let cell = requeststableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+            as! RequestTableViewCell
         
-        // TODO: use cell.configure()
         cell.configure(cellData: createCell(cr: requestsList[indexPath.item]))
-        
         return cell
     }
     
@@ -82,32 +81,32 @@ extension RequestListViewController: UITableViewDataSource {
         
         var personName = ""
         var avatar: UIImage?
-        if let account = service.accounts.first(where: {$0.id == cr.studyOwner!}) {
+        if let account = service.accounts.first(where: { $0.id == cr.studyOwner! }) {
             personName = account.getFullName()
             if let data = account.avatar {
                 avatar = UIImage(data: data)
             }
         }
-        
         return RequstCell(studyName: studyName, specialistName: personName, date: date, avatar: avatar)
     }
     
 }
 
 extension RequestListViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO: open request details
-        print("clicked item \(indexPath.item)")
-        
-        // TODO: add rest cases
         switch requestType {
         case .pending:
             if let id = requestsList[indexPath.item].id {
                 self.service.moveToPendingCr(vc: self, id: id)
             }
+        case .accepted:
+            if let id = requestsList[indexPath.item].id {
+                self.service.moveToAcceptedCr(vc: self, id: id)
+            }
         default:
+            // rest request don't have additional screens
             break
         }
-        
     }
 }
