@@ -15,6 +15,7 @@ protocol ViewControllerFactory {
     func requestListController(type: RequestType) -> RequestListViewController
     func pendingRequestController(id: Int) -> PendingRequestViewController
     func accptedRequestController(id: Int) -> AcceptedRequestViewController
+    func composeController(id: Int) -> ComposeViewController
 }
 
 class AppContext: ViewControllerFactory, PresenterContext {
@@ -48,5 +49,9 @@ class AppContext: ViewControllerFactory, PresenterContext {
     
     func accptedRequestController(id: Int) -> AcceptedRequestViewController {
         return AcceptedRequestViewController(midomService: midomService, crId: id)
+    }
+    
+    func composeController(id: Int) -> ComposeViewController {
+        return ComposeViewController(midomService: midomService, crId: id)
     }
 }

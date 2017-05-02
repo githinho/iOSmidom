@@ -64,7 +64,7 @@ class AcceptedRequestViewController: UIViewController {
     }
     
     @objc private func composeBarButtonClicked() {
-        
+        service.moveToComposeComment(vc: self, id: crId)
     }
 }
 

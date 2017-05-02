@@ -132,6 +132,10 @@ class MidomService {
         self.navigation.showAcceptedRequest(viewController: vc, id: id)
     }
     
+    func moveToComposeComment(vc: UIViewController, id: Int) {
+        self.navigation.showCompose(viewController: vc, id: id)
+    }
+    
     func acceptPendingCr(vc: UIViewController, crId: Int) {
         error = nil
         api.answerPendingCr(accept: true, crId: crId) { [weak self] result in

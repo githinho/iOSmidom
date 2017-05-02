@@ -43,4 +43,9 @@ class NavigationService {
         viewController.navigationController?.pushViewController(
             viewControllerFactory.accptedRequestController(id: id), animated: true)
     }
+    
+    func showCompose(viewController: UIViewController, id: Int) {
+        viewController.navigationController?.pushViewController(
+            viewControllerFactory.composeController(id: id), animated: true)
+    }
 }
