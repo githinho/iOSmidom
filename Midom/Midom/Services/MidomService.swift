@@ -145,6 +145,7 @@ class MidomService {
                 // TODO: download the study
                 
                 self.navigation.showAcceptedRequest(viewController: vc, id: crId)
+                self.signal()
             case .failure(let error):
                 self.error = error
                 self.signal()
