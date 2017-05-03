@@ -30,6 +30,8 @@ class Renderer {
                     topvc.update(viewModel: Presenter.present(context: self.presenterContext))
                 } else if let topvc = nc.topViewController as? AcceptedRequestViewController {
                     topvc.update(viewModel: Presenter.present(context: self.presenterContext))
+                } else if let topvc = nc.topViewController as? ComposeViewController {
+                    topvc.update(errorMessage: Presenter.present(context: self.presenterContext))
                 }
             }
         }

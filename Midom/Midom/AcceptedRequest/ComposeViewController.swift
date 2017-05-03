@@ -33,6 +33,10 @@ class ComposeViewController: UIViewController {
         commentTextView.becomeFirstResponder()
     }
     
+    func update(errorMessage: String) {
+        self.view.makeToast(errorMessage)
+    }
+    
     @IBAction func sendCommentButtonClicked(_ sender: UIButton) {
         if let comment = commentTextView.text {
             service.sendConsultationComment(id: crId, comment: comment)
