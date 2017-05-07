@@ -21,19 +21,19 @@ class ApiValidation {
     func checkString(response: DataResponse<Any>,
                      completionHandler: @escaping (MidomResult<String>) -> Void) {
         let serviceResult = self.checkResult(response: response)
-        self.checkResponseString(checkedResult: serviceResult, completionHandler: completionHandler)
+        self.validateString(checkedResult: serviceResult, completionHandler: completionHandler)
     }
     
     func checkJSONObject<T: Decodable>(response: DataResponse<Any>,
                          completionHandler: @escaping (MidomResult<T>) -> Void) {
         let serviceResult = self.checkResult(response: response)
-        self.checkJSONObject(checkedResult: serviceResult, completionHandler: completionHandler)
+        self.validateJSONObject(checkedResult: serviceResult, completionHandler: completionHandler)
     }
     
     func checkJSONArray<T: Decodable>(response: DataResponse<Any>,
                            completionHandler: @escaping (MidomResult<[T]>) -> Void) {
         let serviceResult = self.checkResult(response: response)
-        self.checkJSONArray(checkedResult: serviceResult, completionHandler: completionHandler)
+        self.validateJSONArray(checkedResult: serviceResult, completionHandler: completionHandler)
     }
     
     func checkResult(response: DataResponse<Any>) -> MidomResult<Any> {
