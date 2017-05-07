@@ -22,6 +22,7 @@
 		4C5088761EA56C000005E9E2 /* AppContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5088751EA56C000005E9E2 /* AppContext.swift */; };
 		4C5088781EA56CC50005E9E2 /* NavigationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5088771EA56CC50005E9E2 /* NavigationService.swift */; };
 		4C50887A1EA572320005E9E2 /* MidomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5088791EA572320005E9E2 /* MidomService.swift */; };
+		4C5428AB1EBF8BC6006AA7B9 /* ApiValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5428AA1EBF8BC6006AA7B9 /* ApiValidation.swift */; };
 		4C8A51531E9924E000370925 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8A51521E9924E000370925 /* AppDelegate.swift */; };
 		4CA440051EB9063F00B20FBE /* AcceptedRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA440031EB9063F00B20FBE /* AcceptedRequestViewController.swift */; };
 		4CA440061EB9063F00B20FBE /* AcceptedRequestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CA440041EB9063F00B20FBE /* AcceptedRequestViewController.xib */; };
@@ -58,6 +59,7 @@
 		4C5088751EA56C000005E9E2 /* AppContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppContext.swift; sourceTree = "<group>"; };
 		4C5088771EA56CC50005E9E2 /* NavigationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationService.swift; path = Services/NavigationService.swift; sourceTree = "<group>"; };
 		4C5088791EA572320005E9E2 /* MidomService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MidomService.swift; path = Services/MidomService.swift; sourceTree = "<group>"; };
+		4C5428AA1EBF8BC6006AA7B9 /* ApiValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiValidation.swift; path = Utils/ApiValidation.swift; sourceTree = "<group>"; };
 		4C8A514F1E9924E000370925 /* Midom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Midom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C8A51521E9924E000370925 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C8A515E1E9924E000370925 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -134,6 +136,15 @@
 			name = PendingRequest;
 			sourceTree = "<group>";
 		};
+		4C5428A91EBF8B94006AA7B9 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				4C32B0EF1EB692B00047596F /* Utils.swift */,
+				4C5428AA1EBF8BC6006AA7B9 /* ApiValidation.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		4C8A51461E9924DF00370925 = {
 			isa = PBXGroup;
 			children = (
@@ -164,7 +175,7 @@
 				4CD0F0C11E994DD200891758 /* Models */,
 				4C2ADE741EA6C6CE004E260A /* Architecture */,
 				4C8A51521E9924E000370925 /* AppDelegate.swift */,
-				4C32B0EF1EB692B00047596F /* Utils.swift */,
+				4C5428A91EBF8B94006AA7B9 /* Utils */,
 				4C2ADE751EA6C6DC004E260A /* Supporting Files */,
 			);
 			path = Midom;
@@ -390,6 +401,7 @@
 				4C102F261EA534F7007066EC /* RequestListViewController.swift in Sources */,
 				4C8A51531E9924E000370925 /* AppDelegate.swift in Sources */,
 				4CD0F0D01E99554100891758 /* MidomApi.swift in Sources */,
+				4C5428AB1EBF8BC6006AA7B9 /* ApiValidation.swift in Sources */,
 				4C102F2A1EA535B9007066EC /* RequestType.swift in Sources */,
 				4CD0F0C31E9950F400891758 /* AccountDetails.swift in Sources */,
 				4C5088781EA56CC50005E9E2 /* NavigationService.swift in Sources */,

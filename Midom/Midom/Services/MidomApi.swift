@@ -22,6 +22,7 @@ class MidomApi {
     let baseUrl = "http://midom.rasip.fer.hr:8080/"
     let endpoint: String
     let navigationService: NavigationService
+    let validator: ApiValidation
     
     init(navigationService: NavigationService) {
         self.navigationService = navigationService
@@ -29,6 +30,7 @@ class MidomApi {
         Timberjack.logStyle = .verbose
         let configuration = Timberjack.defaultSessionConfiguration()
         manager = Alamofire.SessionManager(configuration: configuration)
+        validator = ApiValidation(navigationService: navigationService)
     }
     
     func login(username: String, password: String,
@@ -40,8 +42,7 @@ class MidomApi {
         manager.request(endpoint + "login", method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .validate()
             .responseJSON{ response in
-                let serviceResult = self.checkResult(response: response)
-                self.checkResponseString(checkedResult: serviceResult, completionHandler: completionHandler)
+                self.validator.checkString(response: response, completionHandler: completionHandler)
         }
     }
     
@@ -50,8 +51,7 @@ class MidomApi {
         manager.request(endpoint + "getCr/\(status.rawValue)", method: .get, encoding: JSONEncoding.default)
             .validate()
             .responseJSON() { response in
-                let serviceResult = self.checkResult(response: response)
-                self.checkJSONArray(checkedResult: serviceResult, completionHandler: completionHandler)
+                self.validator.checkJSONArray(response: response, completionHandler: completionHandler)
         }
     }
     
@@ -59,8 +59,7 @@ class MidomApi {
         manager.request(endpoint + "getStudy/\(studyId)", method: .get, encoding: JSONEncoding.default)
             .validate()
             .responseJSON() { response in
-                let serviceResult = self.checkResult(response: response)
-                self.checkJSONObject(checkedResult: serviceResult, completionHandler: completionHandler)
+                self.validator.checkJSONObject(response: response, completionHandler: completionHandler)
         }
     }
     
@@ -68,8 +67,7 @@ class MidomApi {
         manager.request(endpoint + "accountDetails", method: .get, encoding: JSONEncoding.default)
             .validate()
             .responseJSON() { response in
-                let checkedResult = self.checkResult(response: response)
-                self.checkJSONObject(checkedResult: checkedResult, completionHandler: completionHandler)
+                self.validator.checkJSONObject(response: response, completionHandler: completionHandler)
         }
     }
     
@@ -77,8 +75,7 @@ class MidomApi {
         manager.request(endpoint + "getAccount/\(id)", method: .get, encoding: JSONEncoding.default)
             .validate()
             .responseJSON() { response in
-                let checkedResult = self.checkResult(response: response)
-                self.checkJSONObject(checkedResult: checkedResult, completionHandler: completionHandler)
+                self.validator.checkJSONObject(response: response, completionHandler: completionHandler)
         }
     }
     
@@ -87,8 +84,7 @@ class MidomApi {
         manager.request(endpoint + "geCrMessages/\(id)", method: .get, encoding: JSONEncoding.default)
             .validate()
             .responseJSON() { response in
-                let checkedResult = self.checkResult(response: response)
-                self.checkJSONArray(checkedResult: checkedResult, completionHandler: completionHandler)
+                self.validator.checkJSONArray(response: response, completionHandler: completionHandler)
         }
     }
     
@@ -104,9 +100,7 @@ class MidomApi {
         manager.request(endpoint + answer, method: .post, parameters: params, encoding: JSONEncoding.default)
             .validate()
             .responseJSON() { response in
-                
-                let checkedResult = self.checkResult(response: response)
-                self.checkResponseString(checkedResult: checkedResult, completionHandler: completionHandler)
+                self.validator.checkString(response: response, completionHandler: completionHandler)
         }
     }
     
@@ -115,7 +109,7 @@ class MidomApi {
         manager.request(endpoint + "setCrAnswer", method: .post, parameters: params, encoding: JSONEncoding.default)
             .validate()
             .responseJSON() { response in
-                let checkedResult = self.checkResult(response: response)
+                let checkedResult = self.validator.checkResult(response: response)
                 completionHandler(checkedResult)
         }
     }
@@ -132,90 +126,6 @@ class MidomApi {
                     result = MidomResult.failure(error.localizedDescription)
                 }
                 completionHandler(result);
-        }
-    }
-    
-    private func checkResult(response: DataResponse<Any>) -> MidomResult<Any> {
-        var serviceResult = MidomResult<Any>.failure("Initial failure")
-        switch response.result {
-        case .success(let jsonDictionary):
-            if let jsonResponse = MidomResponse(json: jsonDictionary as! [String : Any]) {
-                // TODO: response code for
-                switch jsonResponse.code {
-                case 0:
-                    serviceResult = MidomResult.success(jsonResponse.message)
-                case 1:
-                    if let message = jsonResponse.message as? String,
-                        message == "Not logged in" {
-                        navigationService.showLogin()
-                    }
-                    serviceResult = MidomResult.failure(getResponseMessage(message: jsonResponse.message))
-                default:
-                    serviceResult = MidomResult.failure(getResponseMessage(message: jsonResponse.message))
-                }
-            } else {
-                serviceResult = MidomResult.failure("unknow response")
-            }
-        case .failure(let failure):
-            serviceResult = MidomResult.failure(failure.localizedDescription)
-        }
-        return serviceResult
-    }
-    
-    private func checkResponseString(checkedResult: MidomResult<Any>,
-                                 completionHandler: @escaping (MidomResult<String>) -> Void) {
-        var result: MidomResult<String>
-        switch checkedResult {
-        case .success(let message):
-            if let successMessage = message as? String {
-                result = MidomResult.success(successMessage)
-            } else {
-                result = MidomResult.failure("cannot deserialize Study JSON")
-            }
-        case .failure(let message):
-            result = MidomResult.failure(message)
-        }
-        completionHandler(result)
-    }
-    
-    private func checkJSONObject<T: Decodable>(checkedResult: MidomResult<Any>,
-                                 completionHandler: @escaping (MidomResult<T>) -> Void) {
-        var result: MidomResult<T>
-        switch checkedResult {
-        case .success(let message):
-            if let json = message as? JSON, let object = T(json: json) {
-                result = MidomResult.success(object)
-            } else {
-                result = MidomResult.failure("cannot deserialize JSON")
-            }
-        case .failure(let message):
-            result = MidomResult.failure(message)
-        }
-        completionHandler(result)
-    }
-    
-    private func checkJSONArray<T: Decodable>(checkedResult: MidomResult<Any>,
-                                completionHandler: @escaping (MidomResult<[T]>) -> Void) {
-        var result: MidomResult<[T]>
-        switch checkedResult {
-        case .success(let message):
-            if let jsons = message as? [JSON],
-                let consultationRequests = [T].from(jsonArray: jsons) {
-                result = MidomResult.success(consultationRequests)
-            } else {
-                result = MidomResult.failure("cannot deserialize Study JSON")
-            }
-        case .failure(let message):
-            result = MidomResult.failure(message)
-        }
-        completionHandler(result)
-    }
-    
-    private func getResponseMessage(message: Any) -> String {
-        if let messageString = message as? String {
-            return messageString
-        } else {
-            return "cannot get message from JSON"
         }
     }
 }
