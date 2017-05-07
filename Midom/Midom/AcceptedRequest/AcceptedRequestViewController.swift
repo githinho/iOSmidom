@@ -53,20 +53,15 @@ class AcceptedRequestViewController: UIViewController {
     private func presentData(viewModel: PendingCrViewModel) {
         if let consultationRequest = viewModel.consultationRequests?
             .first(where: { $0.id == crId }) {
-            let studyName = consultationRequest.studyObj?.name ?? ""
-            studyNameLabel.text = "Name study: \(studyName)"
+            studyNameLabel.text = Utils.getStudyNameLabel(name: consultationRequest.studyObj?.name)
             
             if let account = viewModel.accounts?
                 .first(where: { $0.id == consultationRequest.studyOwner} ) {
-                studyProviderLabel.text = "Study provider: \(account.getFullName())"
+                studyProviderLabel.text = Utils.getSpecialistNameLabel(account: account)
             }
         }
         if let messages = viewModel.crMessages {
-            commentLable.text = "Specialist comment: "
-            for message in messages {
-                let comment = message.comment ?? ""
-                commentLable.text?.append("\(comment) \n")
-            }
+            commentLable.text = Utils.getSpecialistComment(messages: messages)
         }
     }
     

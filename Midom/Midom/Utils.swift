@@ -25,4 +25,27 @@ class Utils {
         }
     }
     
+    static func getCreationDateLabel(date: UInt64?) -> String {
+        let dateString = getDateFromDouble(date: date)
+        return "Creation date: \(dateString)"
+    }
+    
+    static func getStudyNameLabel(name: String?) -> String {
+        let studyName = name ?? ""
+        return "Name study: \(studyName)"
+    }
+    
+    static func getSpecialistNameLabel(account: AccountDetails?) -> String {
+        let name = account?.getFullName() ?? ""
+        return "Study specialist: \(name))"
+    }
+    
+    static func getSpecialistComment(messages: [ConsultationRequestMessage]) -> String {
+        var comment = "Specialist comment: "
+        for message in messages {
+            let messageComment = message.comment ?? ""
+            comment.append("\(messageComment) \n")
+        }
+        return comment
+    }
 }

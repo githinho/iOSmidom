@@ -46,14 +46,12 @@ class PendingRequestViewController: UIViewController {
     private func presentDatat(viewModel: PendingCrViewModel) {
         if let consultationRequest = viewModel.consultationRequests?
             .first(where: { $0.id == crId }) {
-            let studyName = consultationRequest.studyObj?.name ?? ""
-            let date = Utils.getDateFromDouble(date: consultationRequest.creationTime)
-            nameStudyLabel.text = "Name study: \(studyName)"
-            dateLabel.text = "Creation date: \(date)"
+            nameStudyLabel.text = Utils.getStudyNameLabel(name: consultationRequest.studyObj?.name)
+            dateLabel.text = Utils.getCreationDateLabel(date: consultationRequest.creationTime)
             
             if let account = viewModel.accounts?
                 .first(where: { $0.id == consultationRequest.studyOwner} ) {
-                specialistLabel.text = "Study specialist: \(account.getFullName())"
+                specialistLabel.text = Utils.getSpecialistNameLabel(account: account)
             }
         }
         if let messages = viewModel.crMessages {
