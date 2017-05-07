@@ -78,27 +78,9 @@ class MidomService {
         consultationRequests = [ConsultationRequest]()
         api.getConsulationRequestByStatus(status: status) { [weak self] result in
             guard let `self` = self else { return }
-            
             switch result {
             case .success(let requests):
-                var accountIds = [Int]()
-                for request in requests {
-                    accountIds.append(request.studyOwner!)
-                    if let studyId = request.study {
-                        self.error = nil
-                        self.api.getStudy(studyId: studyId) { resultStudy in
-                            switch resultStudy {
-                            case .success(let study):
-                                request.studyObj = study
-                                self.consultationRequests?.append(request)
-                            case .failure(let message):
-                                self.error = message
-                            }
-                            self.signal()
-                        }
-                    }
-                }
-                self.getAccountDetails(ids: accountIds)
+                self.downloadRequets(requests: requests)
             case .failure(let message):
                 self.error = message
                 self.signal()
@@ -206,29 +188,61 @@ class MidomService {
         
         for id in uniqueIds {
             error = nil
-            api.getAccountDetails(id: id) { [weak self] result in
-                guard let `self` = self else { return }
-                switch result {
-                case .success(let accountDetails):
-                    self.accounts.append(accountDetails)
-                case .failure(let error):
-                    self.error = error
-                    self.signal()
-                }
+            downloadAccountDetails(id: id)
+            downloadAvatar(id: id)
+        }
+    }
+    
+    private func downloadRequets(requests: [ConsultationRequest]) {
+        var accountIds = [Int]()
+        for request in requests {
+            accountIds.append(request.studyOwner!)
+            if let studyId = request.study {
+                downloadStudy(request: request, studyId: studyId)
             }
-            
-            api.getAvatar(accountId: id) { [weak self] result in
-                guard let `self` = self else { return }
-                switch result {
-                case .success(let data):
-                    if let index = self.accounts.index(where: {$0.id == id}) {
-                        self.accounts[index].avatar = data
-                    }
-                case .failure(let error):
-                    self.error = error
-                }
+        }
+        self.getAccountDetails(ids: accountIds)
+    }
+    
+    private func downloadStudy(request: ConsultationRequest, studyId: Int) {
+        self.error = nil
+        self.api.getStudy(studyId: studyId) { resultStudy in
+            switch resultStudy {
+            case .success(let study):
+                request.studyObj = study
+                self.consultationRequests?.append(request)
+            case .failure(let message):
+                self.error = message
+            }
+            self.signal()
+        }
+    }
+    
+    private func downloadAccountDetails(id: Int) {
+        api.getAccountDetails(id: id) { [weak self] result in
+            guard let `self` = self else { return }
+            switch result {
+            case .success(let accountDetails):
+                self.accounts.append(accountDetails)
+            case .failure(let error):
+                self.error = error
                 self.signal()
             }
+        }
+    }
+    
+    private func downloadAvatar(id: Int) {
+        api.getAvatar(accountId: id) { [weak self] result in
+            guard let `self` = self else { return }
+            switch result {
+            case .success(let data):
+                if let index = self.accounts.index(where: {$0.id == id}) {
+                    self.accounts[index].avatar = data
+                }
+            case .failure(let error):
+                self.error = error
+            }
+            self.signal()
         }
     }
 }
