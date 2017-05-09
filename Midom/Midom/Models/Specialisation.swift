@@ -9,7 +9,7 @@
 import Foundation
 import Gloss
 
-class Specialisation: Decodable {
+struct Specialisation: Decodable {
     
     var id: Int?
     var name: String?
@@ -17,12 +17,11 @@ class Specialisation: Decodable {
     var subStudies: [Int]?
     var selected: Bool?
     
-    required init?(json: JSON) {
+    init(json: JSON) {
         self.id = "id" <~~ json
         self.name = "name" <~~ json
         self.parentStudy = "parentStudy" <~~ json
         self.subStudies = "subStudies" <~~ json
         self.selected = "selected" <~~ json
     }
-    
 }

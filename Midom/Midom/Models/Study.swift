@@ -9,7 +9,7 @@
 import Foundation
 import Gloss
 
-class Study: Decodable {
+struct Study: Decodable {
     
     var id: Int?
     var name: String?
@@ -18,7 +18,7 @@ class Study: Decodable {
     var open: Bool?
     var ownerObj: AccountDetails?
     
-    required init?(json: JSON) {
+    init(json: JSON) {
         self.id = "id" <~~ json
         self.name = "name" <~~ json
         self.creationDate = "creationDate" <~~ json

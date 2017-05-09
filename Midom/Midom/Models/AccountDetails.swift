@@ -9,7 +9,7 @@
 import Foundation
 import Gloss
 
-class AccountDetails: Decodable {
+struct AccountDetails: Decodable {
     
     var id: Int?
     var username: String?
@@ -25,7 +25,7 @@ class AccountDetails: Decodable {
     var specialisations: [Specialisation]?
     var avatar: Data?
     
-    required init?(json: JSON) {
+    init(json: JSON) {
         self.id = "id" <~~ json
         self.username = "username" <~~ json
         self.firstName = "firstName" <~~ json

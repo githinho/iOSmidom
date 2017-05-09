@@ -9,7 +9,7 @@
 import Foundation
 import Gloss
 
-class ConsultationRequestMessage: Decodable {
+struct ConsultationRequestMessage: Decodable {
     
     var id: Int?
     var comment: String?
@@ -17,7 +17,7 @@ class ConsultationRequestMessage: Decodable {
     var msSender: String?
     var spSender: String?
     
-    required init?(json: JSON) {
+    init(json: JSON) {
         self.id = "id" <~~ json
         self.comment = "comment" <~~ json
         self.creationTime = "creationTime" <~~ json
