@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1BA59BB4497B15AEBD322A0D /* Pods_Midom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC4F24E8CF4940CEABD3A5B /* Pods_Midom.framework */; };
+		4C0E8D451EC242E000D4048C /* KeychainHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0E8D441EC242E000D4048C /* KeychainHandler.swift */; };
 		4C102F261EA534F7007066EC /* RequestListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C102F241EA534F7007066EC /* RequestListViewController.swift */; };
 		4C102F271EA534F7007066EC /* RequestListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C102F251EA534F7007066EC /* RequestListViewController.xib */; };
 		4C102F2A1EA535B9007066EC /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C102F291EA535B9007066EC /* RequestType.swift */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		22553E624407AF28F2993D81 /* Pods-Midom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Midom.release.xcconfig"; path = "Pods/Target Support Files/Pods-Midom/Pods-Midom.release.xcconfig"; sourceTree = "<group>"; };
+		4C0E8D441EC242E000D4048C /* KeychainHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainHandler.swift; path = Utils/KeychainHandler.swift; sourceTree = "<group>"; };
 		4C102F241EA534F7007066EC /* RequestListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestListViewController.swift; path = RequestList/RequestListViewController.swift; sourceTree = "<group>"; };
 		4C102F251EA534F7007066EC /* RequestListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RequestListViewController.xib; path = RequestList/RequestListViewController.xib; sourceTree = "<group>"; };
 		4C102F291EA535B9007066EC /* RequestType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestType.swift; path = RequestList/RequestType.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			children = (
 				4C32B0EF1EB692B00047596F /* Utils.swift */,
 				4C5428AA1EBF8BC6006AA7B9 /* ApiValidation.swift */,
+				4C0E8D441EC242E000D4048C /* KeychainHandler.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				4C5088781EA56CC50005E9E2 /* NavigationService.swift in Sources */,
 				4C102F2D1EA54C2F007066EC /* RequestTableViewCell.swift in Sources */,
 				4CD0F0D41E99791300891758 /* MidomResponse.swift in Sources */,
+				4C0E8D451EC242E000D4048C /* KeychainHandler.swift in Sources */,
 				4C32B0F01EB692B00047596F /* Utils.swift in Sources */,
 				4C2ADE711EA6BE54004E260A /* Renderer.swift in Sources */,
 				4CA440051EB9063F00B20FBE /* AcceptedRequestViewController.swift in Sources */,

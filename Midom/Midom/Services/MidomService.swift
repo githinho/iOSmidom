@@ -13,19 +13,19 @@ class MidomService {
     
     typealias SignalUpdate = () -> ()
     
-    private let usernameKey = "KeyForUsername"
-    private let passwordKey = "KeyForPassword"
-    
     private let signal: SignalUpdate
     private let api: MidomApi
     private let navigation: NavigationService
+    private let keychain = KeychainHandler()
     
     var error: String?
     var consultationRequests: [ConsultationRequest]?
     var accounts = [AccountDetails]()
     var crMessages = [ConsultationRequestMessage]()
 
-    init(midomApi: MidomApi, navigationService: NavigationService, signal: @escaping SignalUpdate) {
+    init(midomApi: MidomApi,
+         navigationService: NavigationService,
+         signal: @escaping SignalUpdate) {
         self.api = midomApi
         self.navigation = navigationService
         self.signal = signal
@@ -38,9 +38,7 @@ class MidomService {
             
             switch result {
             case .success(_):
-                let keychain = KeychainSwift()
-                keychain.set(username, forKey: self.usernameKey)
-                keychain.set(password, forKey: self.passwordKey)
+                self.keychain.saveUser(username: username, password: password)
                 self.navigation.showHome()
             case .failure(let message):
                 self.error = message
@@ -50,10 +48,8 @@ class MidomService {
     }
     
     func tryToLoginUser() {
-        let keychain = KeychainSwift()
-        if let username = keychain.get(usernameKey),
-            let password = keychain.get(passwordKey) {
-            api.login(username: username, password: password) { [weak self] result in
+        if let user = keychain.getUser() {
+            api.login(username: user.username, password: user.password) { [weak self] result in
                 guard let `self` = self else { return }
                 switch result {
                 case .success(_):
@@ -68,8 +64,7 @@ class MidomService {
     }
     
     func logoutUser() {
-        let keychain = KeychainSwift()
-        keychain.clear()
+        keychain.clearKeychain()
         self.navigation.showLogin()
     }
     
@@ -236,13 +231,17 @@ class MidomService {
             guard let `self` = self else { return }
             switch result {
             case .success(let data):
-                if let index = self.accounts.index(where: {$0.id == id}) {
-                    self.accounts[index].avatar = data
-                }
+                self.assignAvatarToAccount(id: id, data: data)
             case .failure(let error):
                 self.error = error
             }
             self.signal()
+        }
+    }
+    
+    private func assignAvatarToAccount(id: Int, data: Data) {
+        if let index = self.accounts.index(where: {$0.id == id}) {
+            self.accounts[index].avatar = data
         }
     }
 }
